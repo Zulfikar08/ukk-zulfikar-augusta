@@ -1,4 +1,4 @@
-@extends('layouts/auth/app')
+@extends('layouts.home.app')
 
 @section('title', 'Envelope')
 <!-- Content Wrapper. Contains page content -->
@@ -24,8 +24,8 @@
             <div class="row">
                 <div class="col-lg-12">
                     <h2>Layanan yang tersedia</h2>
-                    <p class="p-heading p-large">We serve small and medium sized companies in all tech related
-                        industries with high quality growth services which are presented below</p>
+                    <p class="p-heading p-large">Beriku 3 layanan atau fitur utama yang disediakan Envelope dalam mengelola aduan
+                        masyarakat</p>
                 </div> <!-- end of col -->
             </div> <!-- end of row -->
             <div class="row">
@@ -34,9 +34,9 @@
                     <!-- Card -->
                     <div class="card">
                         <div class="card-body">
-                            <h4 class="card-title">Market Analysis</h4>
-                            <p>Our team of enthusiastic marketers will analyse and evaluate how your company stacks
-                                against the closest competitors</p>
+                            <h4 class="card-title">Create</h4>
+                            <p>Anda bisa membuat suatu laporan aduan dengan cara mengisi formulir yang disediakan
+                                didalamnya lalu lakukan input data untuk melakukan laporan aduannya.</p>
                         </div>
                     </div>
                     <!-- end of card -->
@@ -44,9 +44,9 @@
                     <!-- Card -->
                     <div class="card">
                         <div class="card-body">
-                            <h4 class="card-title">Opportunity Scan</h4>
-                            <p>Once the market analysis process is completed our staff will search for opportunities
-                                that are in reach</p>
+                            <h4 class="card-title">Visibility</h4>
+                            <p>Anda bisa melihat semua data aduan dari tiap-tiap masyarakat dan dapat melihat
+                                balasan apa saja yang dilakukan petugas pada suatu aduan.</p>
                         </div>
                     </div>
                     <!-- end of card -->
@@ -54,9 +54,9 @@
                     <!-- Card -->
                     <div class="card">
                         <div class="card-body">
-                            <h4 class="card-title">Action Plan</h4>
-                            <p>With all the information in place you will be presented with an action plan that your
-                                company needs to follow</p>
+                            <h4 class="card-title">Comment</h4>
+                            <p>Aduan yang anda kirimkan dapat dilihat oleh petugas serta dibalas apabila aduan itu
+                                telah terverifikasi oleh petugas, masyarakat bisa menanggapi.</p>
                         </div>
                     </div>
                     <!-- end of card -->
@@ -74,9 +74,9 @@
             <div class="row">
                 <div class="col-lg-6">
                     <div class="text-container">
-                        <h2>Design And Plan Your Business Growth Steps</h2>
-                        <p>Use our staff and our expertise to design and plan your business growth strategy. Evolo team
-                            is eager to advise you on the best opportunities that you should look into</p>
+                        <h2>Tulis dan Tanggapi Aduan Dimanapun!</h2>
+                        <p>Sudah sudah ada sekitar 12321 aduan dan tanggapan yang terdata di Envelope dan ada sekitar 
+                            3211 dengan status selesai di tangani! Ayo gabung dan ikut berpartisipasi di Envelope</p>
                         <a class="btn-solid-reg popup-with-move-anim" href="#details-lightbox-1">LIGHTBOX</a>
                     </div> <!-- end of text-container -->
                 </div> <!-- end of col -->
@@ -235,7 +235,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <h2>Multiple Pricing Options</h2>
+                    <h2>Data Terverifikasi</h2>
                     <p class="p-heading p-large">We've prepared pricing plans for all budgets so you can get started
                         right away. They're great for small companies and large organizations</p>
                 </div> <!-- end of col -->
@@ -246,38 +246,15 @@
                     <!-- Card-->
                     <div class="card">
                         <div class="card-body">
-                            <div class="card-title">STARTER</div>
-                            <div class="card-subtitle">Just to see what can be achieved</div>
+                            <div class="card-title">MASYARAKAT</div>
+                            <div class="card-subtitle">Jumlah masyarakt terdata</div>
                             <hr class="cell-divide-hr">
                             <div class="price">
-                                <span class="currency">$</span><span class="value">199</span>
-                                <div class="frequency">monthly</div>
+                                <span class="value">110</span>
                             </div>
                             <hr class="cell-divide-hr">
-                            <ul class="list-unstyled li-space-lg">
-                                <li class="media">
-                                    <i class="fas fa-check"></i>
-                                    <div class="media-body">Improve Your Email Marketing</div>
-                                </li>
-                                <li class="media">
-                                    <i class="fas fa-check"></i>
-                                    <div class="media-body">User And Admin Rights Control</div>
-                                </li>
-                                <li class="media">
-                                    <i class="fas fa-times"></i>
-                                    <div class="media-body">List Building And Cleaning</div>
-                                </li>
-                                <li class="media">
-                                    <i class="fas fa-times"></i>
-                                    <div class="media-body">Collected Data Management</div>
-                                </li>
-                                <li class="media">
-                                    <i class="fas fa-times"></i>
-                                    <div class="media-body">More Planning And Evaluation</div>
-                                </li>
-                            </ul>
                             <div class="button-wrapper">
-                                <a class="btn-solid-reg page-scroll" href="#request">REQUEST</a>
+                                <a class="btn-solid-reg page-scroll" href="#request">Gabung</a>
                             </div>
                         </div>
                     </div> <!-- end of card -->
@@ -286,38 +263,15 @@
                     <!-- Card-->
                     <div class="card">
                         <div class="card-body">
-                            <div class="card-title">MEDIUM</div>
-                            <div class="card-subtitle">Very appropriate for the short term</div>
+                            <div class="card-title">ADUAN</div>
+                            <div class="card-subtitle">Jumlah aduan terdata</div>
                             <hr class="cell-divide-hr">
                             <div class="price">
-                                <span class="currency">$</span><span class="value">299</span>
-                                <div class="frequency">monthly</div>
+                                <span class="value">119</span>
                             </div>
                             <hr class="cell-divide-hr">
-                            <ul class="list-unstyled li-space-lg">
-                                <li class="media">
-                                    <i class="fas fa-check"></i>
-                                    <div class="media-body">Improve Your Email Marketing</div>
-                                </li>
-                                <li class="media">
-                                    <i class="fas fa-check"></i>
-                                    <div class="media-body">User And Admin Rights Control</div>
-                                </li>
-                                <li class="media">
-                                    <i class="fas fa-check"></i>
-                                    <div class="media-body">List Building And Cleaning</div>
-                                </li>
-                                <li class="media">
-                                    <i class="fas fa-check"></i>
-                                    <div class="media-body">Collected Data Management</div>
-                                </li>
-                                <li class="media">
-                                    <i class="fas fa-times"></i>
-                                    <div class="media-body">More Planning And Evaluation</div>
-                                </li>
-                            </ul>
                             <div class="button-wrapper">
-                                <a class="btn-solid-reg page-scroll" href="#request">REQUEST</a>
+                                <a class="btn-solid-reg page-scroll" href="#request">Tulis aduan</a>
                             </div>
                         </div>
                     </div> <!-- end of card -->
@@ -326,41 +280,18 @@
                     <!-- Card-->
                     <div class="card">
                         <div class="label">
-                            <p class="best-value">Best Value</p>
+                            <p class="best-value">Profesional</p>
                         </div>
                         <div class="card-body">
-                            <div class="card-title">COMPLETE</div>
-                            <div class="card-subtitle">Must have for large companies</div>
+                            <div class="card-title">PETUGAS</div>
+                            <div class="card-subtitle">Jumlah petugas terdata</div>
                             <hr class="cell-divide-hr">
                             <div class="price">
-                                <span class="currency">$</span><span class="value">399</span>
-                                <div class="frequency">monthly</div>
+                                <span class="value">12</span>
                             </div>
                             <hr class="cell-divide-hr">
-                            <ul class="list-unstyled li-space-lg">
-                                <li class="media">
-                                    <i class="fas fa-check"></i>
-                                    <div class="media-body">Improve Your Email Marketing</div>
-                                </li>
-                                <li class="media">
-                                    <i class="fas fa-check"></i>
-                                    <div class="media-body">User And Admin Rights Control</div>
-                                </li>
-                                <li class="media">
-                                    <i class="fas fa-check"></i>
-                                    <div class="media-body">List Building And Cleaning</div>
-                                </li>
-                                <li class="media">
-                                    <i class="fas fa-check"></i>
-                                    <div class="media-body">Collected Data Management</div>
-                                </li>
-                                <li class="media">
-                                    <i class="fas fa-check"></i>
-                                    <div class="media-body">More Planning And Evaluation</div>
-                                </li>
-                            </ul>
                             <div class="button-wrapper">
-                                <a class="btn-solid-reg page-scroll" href="#request">REQUEST</a>
+                                <a class="btn-solid-reg page-scroll" href="#request">Hubungi</a>
                             </div>
                         </div>
                     </div> <!-- end of card -->
@@ -372,87 +303,8 @@
     </div> <!-- end of cards-2 -->
     <!-- end of pricing -->
 
-
-    <!-- Request -->
-    <div id="request" class="form-1">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-6">
-                    <div class="text-container">
-                        <h2>Silahkan isi form untuk bergabung di Envelope</h2>
-                        <p>Evolo is one of the easiest and feature packed marketing automation apps in the market.
-                            Discover what it can do for your business organization right away.</p>
-                        <ul class="list-unstyled li-space-lg">
-                            <li class="media">
-                                <i class="fas fa-check"></i>
-                                <div class="media-body"><strong class="blue">Automate your marketing</strong> activities
-                                    and get results today</div>
-                            </li>
-                            <li class="media">
-                                <i class="fas fa-check"></i>
-                                <div class="media-body"><strong class="blue">Interact with all your</strong> targeted
-                                    customers at a personal level</div>
-                            </li>
-                            <li class="media">
-                                <i class="fas fa-check"></i>
-                                <div class="media-body"><strong class="blue">Convince them to buy</strong> your
-                                    company's awesome products</div>
-                            </li>
-                            <li class="media">
-                                <i class="fas fa-check"></i>
-                                <div class="media-body"><strong class="blue">Save precious time</strong> and invest it
-                                    where you need it the most</div>
-                            </li>
-                        </ul>
-                    </div> <!-- end of text-container -->
-                </div> <!-- end of col -->
-                <div class="col-lg-6">
-
-                    <!-- Request Form -->
-                    <div class="form-container">
-                        <form id="requestForm" data-toggle="validator" data-focus="false">
-                            <div class="form-group">
-                                <input type="text" class="form-control-input" id="name" name="name"
-                                    value="{{ old('name') }}" required>
-                                <label class="label-control" for="name">Full name</label>
-                                <div class="help-block with-errors"></div>
-                            </div>
-                            <div class="form-group">
-                                <input type="email" class="form-control-input" id="email" name="email"
-                                    value="{{ old('email') }}" required>
-                                <label class="label-control" for="email">Email</label>
-                                <div class="help-block with-errors"></div>
-                            </div>
-                            <div class="form-group">
-                                <input type="password" class="form-control-input" id="password" name="password"
-                                    required>
-                                <label class="label-control" for="rphone">Password</label>
-                                <div class="help-block with-errors"></div>
-                            </div>
-                            <div class="form-group">
-                                <input type="password" class="form-control-input" id="password-confirm"
-                                    name="password_confirmation" required>
-                                <label class="label-control" for="rphone">Password Confirm</label>
-                                <div class="help-block with-errors"></div>
-                            </div>
-                            <div class="form-group">
-                                <button type="submit" class="form-control-submit-button">GABUNG!</button>
-                            </div>
-                            <div class="form-message">
-                                <div id="rmsgSubmit" class="h3 text-center hidden"></div>
-                            </div>
-                        </form>
-                    </div> <!-- end of form-container -->
-                    <!-- end of request form -->
-
-                </div> <!-- end of col -->
-            </div> <!-- end of row -->
-        </div> <!-- end of container -->
-    </div> <!-- end of form-1 -->
-    <!-- end of request -->
-
     <!-- Testimonials -->
-    <div class="slider-2">
+    <div id="about" class="slider-2">
         <div class="container">
             <div class="row">
                 <div class="col-lg-6">
@@ -461,7 +313,7 @@
                     </div> <!-- end of image-container -->
                 </div> <!-- end of col -->
                 <div class="col-lg-6">
-                    <h2>Testimonials</h2>
+                    <h2>Owner</h2>
 
                     <!-- Card Slider -->
                     <div class="slider-container">
@@ -471,12 +323,11 @@
                                 <!-- Slide -->
                                 <div class="swiper-slide">
                                     <div class="card">
-                                        <img class="card-image" src="web/images/testimonial-1.svg" alt="alternative">
+                                        <img class="card-image" src="web/images/testimonial-3.svg" alt="alternative">
                                         <div class="card-body">
-                                            <p class="testimonial-text">I just finished my trial period and was so
-                                                amazed with the support and results that I purchased Evolo right away at
-                                                the special price.</p>
-                                            <p class="testimonial-author">Jude Thorn - Designer</p>
+                                            <p class="testimonial-text">Hidup bermasyarkat itu tidak jauh dari sikap
+                                                saling melayani, karena itulah layanan ini ada</p>
+                                            <p class="testimonial-author">Zulfikar Augusta - Developer</p>
                                         </div>
                                     </div>
                                 </div> <!-- end of swiper-slide -->
@@ -499,7 +350,7 @@
                                 <!-- Slide -->
                                 <div class="swiper-slide">
                                     <div class="card">
-                                        <img class="card-image" src="web/images/testimonial-3.svg" alt="alternative">
+                                        <img class="card-image" src="web/images/testimonial-1.svg" alt="alternative">
                                         <div class="card-body">
                                             <p class="testimonial-text">Love their services and was so amazed with the
                                                 support and results that I purchased Evolo for two years in a row. They
@@ -529,7 +380,7 @@
 
 
     <!-- About -->
-    <div id="about" class="basic-4">
+    <div class="basic-4">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
@@ -642,71 +493,6 @@
         </div> <!-- end of container -->
     </div> <!-- end of basic-4 -->
     <!-- end of about -->
-
-
-    <!-- Contact -->
-    <div id="contact" class="form-2">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <h2>Contact Information</h2>
-                    <ul class="list-unstyled li-space-lg">
-                        <li class="address">Don't hesitate to give us a call or send us a contact form message</li>
-                        <li><i class="fas fa-map-marker-alt"></i>22 Innovative Area, San Francisco, CA 94043, US</li>
-                        <li><i class="fas fa-phone"></i><a class="turquoise" href="tel:003024630820">+81 720 2212</a>
-                        </li>
-                        <li><i class="fas fa-envelope"></i><a class="turquoise"
-                                href="mailto:office@evolo.com">office@evolo.com</a></li>
-                    </ul>
-                </div> <!-- end of col -->
-            </div> <!-- end of row -->
-            <div class="row">
-                <div class="col-lg-6">
-                    <div class="map-responsive">
-                        <iframe
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d100939.98555098464!2d-122.507640204439!3d37.757814996609724!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80859a6d00690021%3A0x4a501367f076adff!2sSan+Francisco%2C+CA%2C+USA!5e0!3m2!1sen!2sro!4v1498231462606"
-                            allowfullscreen></iframe>
-                    </div>
-                </div> <!-- end of col -->
-                <div class="col-lg-6">
-
-                    <!-- Contact Form -->
-                    <form id="contactForm" data-toggle="validator" data-focus="false">
-                        <div class="form-group">
-                            <input type="text" class="form-control-input" id="cname" required>
-                            <label class="label-control" for="cname">Name</label>
-                            <div class="help-block with-errors"></div>
-                        </div>
-                        <div class="form-group">
-                            <input type="email" class="form-control-input" id="cemail" required>
-                            <label class="label-control" for="cemail">Email</label>
-                            <div class="help-block with-errors"></div>
-                        </div>
-                        <div class="form-group">
-                            <textarea class="form-control-textarea" id="cmessage" required></textarea>
-                            <label class="label-control" for="cmessage">Your message</label>
-                            <div class="help-block with-errors"></div>
-                        </div>
-                        <div class="form-group checkbox">
-                            <input type="checkbox" id="cterms" value="Agreed-to-Terms" required>I have read and agree
-                            with Evolo's stated <a href="privacy-policy.html">Privacy Policy</a> and <a
-                                href="terms-conditions.html">Terms Conditions</a>
-                            <div class="help-block with-errors"></div>
-                        </div>
-                        <div class="form-group">
-                            <button type="submit" class="form-control-submit-button">SUBMIT MESSAGE</button>
-                        </div>
-                        <div class="form-message">
-                            <div id="cmsgSubmit" class="h3 text-center hidden"></div>
-                        </div>
-                    </form>
-                    <!-- end of contact form -->
-
-                </div> <!-- end of col -->
-            </div> <!-- end of row -->
-        </div> <!-- end of container -->
-    </div> <!-- end of form-2 -->
-    <!-- end of contact -->
 
 
     <!-- Footer -->
