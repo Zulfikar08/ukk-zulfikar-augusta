@@ -1,5 +1,5 @@
 @extends('layouts.pages.app')
-@section('title', 'Envelope | Dashboard')
+@section('title', 'Envelope | Aduan')
 
 @section('content')
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
@@ -65,33 +65,33 @@
                 <h6 class="m-0 font-weight-bold text-primary">Aduan Saya</h6>
             </div>
             <div class="card-body">
-                <div class="text-center">
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th scope="col">#</th>
-                                <th scope="col">judul</th>
-                                <th scope="col">aksi</th>
-                            </tr>
-                        </thead>
-                        @foreach( $pengaduan as $item )
-                            <tbody>
-                                <tr>
-                                    <th scope="row">{{ $loop->iteration }}</th>
-                                    <td>{{ $item->judul_laporan }}</td>
-                                    <td>
-                                        <a href="" class="badge badge-primary">
-                                            edit
-                                        </a>
-                                        <a href="" class="badge badge-primary">
-                                            delete
-                                        </a>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        @endforeach
-                    </table>
-                </div>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">judul</th>
+                            <th scope="col">status</th>
+                            <th scope="col">aksi</th>
+                        </tr>
+                    </thead>
+                    @foreach( $pengaduan as $item )
+                    <tbody>
+                        <tr>
+                            <th scope="row">{{ $loop->iteration }}</th>
+                            <td>{{ $item->judul_laporan }}</td>
+                            <td><span class="badge badge-warning">pending</span></td>
+                            <td>
+                                <a href="" class="badge badge-primary">
+                                    edit
+                                </a>
+                                <a href="" class="badge badge-danger">
+                                    delete
+                                </a>
+                            </td>
+                        </tr>
+                    </tbody>
+                    @endforeach
+                </table>
             </div>
         </div>
     </div>

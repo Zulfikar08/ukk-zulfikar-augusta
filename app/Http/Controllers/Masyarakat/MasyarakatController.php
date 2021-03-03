@@ -13,10 +13,10 @@ class MasyarakatController extends Controller
 {
     //
     public function index() {
-        $user = Auth::user()->roles->pluck('name');
+        $menu = Auth::user()->roles->pluck('name');
         $pengaduan = Pengaduan::all();
         return view('masyarakat.auth.index',[
-            'user' => $user,
+            'menu' => $menu,
             'pengaduan' => $pengaduan,
         ]);
     }
@@ -49,11 +49,11 @@ class MasyarakatController extends Controller
 
     public function time_line()
     {
-        $user = Auth::user()->roles->pluck('name');
+        $menu = Auth::user()->roles->pluck('name');
         $pengaduan = Pengaduan::orderBy('id', 'DESC')->paginate(50);
-        return view('masyarakat.auth.time_line',[
+        return view('masyarakat.auth.time-line',[
             'pengaduan' => $pengaduan,
-            'user' => $user,
+            'menu' => $menu,
         ]);
     }
 }

@@ -20,7 +20,15 @@ Auth::routes();
 Route::get('home', 'HomeController@index')->name('home');
 
 Route::namespace('Admin')->group(function() {
+    //Dashboard
     Route::middleware('role:admin')->get('/admin/dashboard', 'DashboardController@index')->name('admin/dashboard');
+    //aduan
+    Route::middleware('role:admin')->get('/admin/data-user', 'AdminController@index')->name('admin/data-user');
+    //detail
+    Route::middleware('role:admin')->get('/admin/detail-user/{id}', 'AdminController@detail')->name('admin/detail-user');
+    Route::middleware('role:admin')->get('/admin/user/{id}/nonaktif', 'AdminController@detail')->name('admin/nonaktif-user');
+    //pdf export
+    Route::middleware('role:admin')->get('/admin/user/export/{id}', 'AdminController@pdf_export')->name('admin/export-pdf');
 });
 Route::namespace('Petugas')->group(function() {
     Route::middleware('role:petugas')->get('/petugas/dashboard', 'DashboardController@index')->name('petugas/dashboard');

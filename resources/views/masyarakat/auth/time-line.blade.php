@@ -1,5 +1,5 @@
 @extends('layouts.pages.app')
-@section('title', 'Envelope | Aduan Saya')
+@section('title', 'Envelope | Timeline')
 
 @section('content')
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
@@ -19,8 +19,10 @@
                     <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 60%; height:60%;"
                         src="{{ url('/'. $item->file) }}" alt="">
                 </div>
+                <p class="text-gray">
+                    <small>{{ $item->tgl_pengaduan }}</small>
+                </p>
                 <p>{{ $item->isi_laporan }}</p>
-                <a target="_blank" rel="nofollow" href="">Tanggapi &rarr;</a>
             </div>
         </div>
     @endforeach

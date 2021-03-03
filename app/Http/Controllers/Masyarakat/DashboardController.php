@@ -10,7 +10,7 @@ class DashboardController extends Controller
 {
     //
     public function index() {
-        $user = Auth::user()->roles->pluck('name');
-        return view('masyarakat.dashboard.index',compact('user'));
+        $menu = Auth::user()->roles->pluck('name');
+        return view('masyarakat.dashboard.index',compact('menu'));
     }
 }
