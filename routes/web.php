@@ -28,7 +28,7 @@ Route::namespace('Admin')->group(function() {
     Route::middleware('role:admin')->get('/admin/detail-user/{id}', 'AdminController@detail')->name('admin/detail-user');
     Route::middleware('role:admin')->get('/admin/user/{id}/nonaktif', 'AdminController@detail')->name('admin/nonaktif-user');
     //pdf export
-    Route::middleware('role:admin')->get('/admin/user/export/{id}', 'AdminController@pdf_export')->name('admin/export-pdf');
+    Route::middleware('role:admin')->get('/admin/user/export', 'AdminController@export_excel')->name('admin/export-excel');
 });
 Route::namespace('Petugas')->group(function() {
     Route::middleware('role:petugas')->get('/petugas/dashboard', 'DashboardController@index')->name('petugas/dashboard');

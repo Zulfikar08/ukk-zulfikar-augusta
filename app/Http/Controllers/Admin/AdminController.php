@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Exports\UserExport;
+use Maatwebsite\Excel\Facades\Excel;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use App\User;
 use App\Pengaduan;
-use PDF;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 
 class AdminController extends Controller
 {
@@ -38,13 +38,7 @@ class AdminController extends Controller
             'pengaduan' => $pengaduan
         ]);
     }
-    public function pdf_export($id) {
-        $user = User::find($id);
-        $data = ['judul' => 'ini judul'];
-        $pdf = PDF::loadView('admin/auth/pdf',[
-            'user' => $user,
-            'data' => $data
-        ]);
-        return $pdf->download($user->name . date(' MY'). '.pdf');
+    public function export_excel() {
+        return Excel::download(new UserExport, 'user-report.xlsx');
     }
 }
