@@ -66,7 +66,10 @@
                                 dimasyarakat.
                                 Dikelola oleh masyarakat dan disuarakan oleh masyarakat!
                             </p>
-                            <a class="btn-solid-lg page-scroll" href="{{ route('register') }}">Daftar Sekarang!</a>
+                            @guest
+                                <a class="btn-solid-lg page-scroll" href="{{ route('register') }}">Daftar Sekarang!</a>
+                                @else
+                            @endguest
                         </div> <!-- end of text-container -->
                     </div> <!-- end of col -->
                     <div class="col-lg-6">

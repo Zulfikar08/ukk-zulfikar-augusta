@@ -29,7 +29,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = RouteServiceProvider::HOME;
+    protected $redirectTo = 'masyarakat/dashboard';
 
     /**
      * Create a new controller instance.
@@ -51,7 +51,8 @@ class RegisterController extends Controller
     {
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
-            'phone' => ['required', 'integer', 'max:13',],
+            'phone' => ['required', 'max:13'],
+            'nik' => ['required', 'max:16'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ], [
@@ -59,6 +60,8 @@ class RegisterController extends Controller
             'phone.required' => 'Nomor telpon harus diisi!',
             'phone.integer' => 'Nomor telpon harus berupa angka!',
             'phone.max' => 'Nomor telpon maksimal 13 karakter!',
+            'nik.required' => 'Nik harus diisi!',
+            'nik.max' => 'Nik maksimal 16 karakter!',
             'email.required' => 'Email harus diisi!',
             'email.email' => 'Email harus berupa email!',
             'email.unique' => 'Email sudah terdaftar!',
@@ -79,7 +82,8 @@ class RegisterController extends Controller
         $user = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
-            'email' => $data['phone'],
+            'phone' => $data['phone'],
+            'nik' => $data['nik'],
             'password' => Hash::make($data['password']),
         ]);
         $user->assignRole('masyarakat');

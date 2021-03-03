@@ -17,6 +17,7 @@ class UserSeeder extends Seeder
             'name' => 'Zulfikar Augusta',
             'email' => 'zulfikarsubang89@gmail.com',
             'phone' => '087715816110',
+            'nik' => '0199288492011211',
             'password' => bcrypt('subang89')
         ]);
 
@@ -26,6 +27,7 @@ class UserSeeder extends Seeder
             'name' => 'Nikola Tesla',
             'email' => 'niko_t@gmail.com',
             'phone' => '085224220227',
+            'nik' => '9989912311791929',
             'password' => bcrypt('subang89')
         ]);
 
@@ -35,6 +37,7 @@ class UserSeeder extends Seeder
             'name' => 'Thomas Alva Edison',
             'email' => 'thomaselect@gmail.com',
             'phone' => '083816069697',
+            'nik' => '0088182661441444',
             'password' => bcrypt('subang89')
         ]);
 

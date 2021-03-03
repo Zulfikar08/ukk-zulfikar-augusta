@@ -15,20 +15,31 @@
                 <div class="form-group">
                     <input type="text" class="form-control form-control-user @error('name') is-invalid @enderror"
                         id="name" name="name" placeholder="Nama Lengkap" value="{{ old('name') }}" autofocus>
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $errors->first('name') }}</strong>
-                        </span>
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $errors->first('name') }}</strong>
+                    </span>
                     @error('name')
                     @enderror
                 </div>
-                <div class="form-group">
-                    <input type="text" class="form-control form-control-user @error('phone') is-invalid @enderror"
-                        id="phone" name="phone" placeholder="No Telepon" value="{{ old('phone') }}" autofocus>
-                    @error('phone')
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                    @enderror
+                <div class="form-group row">
+                    <div class="col-sm-6 mb-3 mb-sm-0">
+                        <input type="text" class="form-control form-control-user @error('phone') is-invalid @enderror"
+                            id="phone" name="phone" placeholder="No Telepon" value="{{ old('phone') }}">
+                        @error('phone')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                        @enderror
+                    </div>
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control form-control-user @error('nik') is-invalid @enderror"
+                            id="nik" name="nik" placeholder="NIK" value="{{ old('nik') }}">
+                        @error('nik')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                        @enderror
+                    </div>
                 </div>
                 <div class="form-group">
                     <input type="text" class="form-control form-control-user @error('email') is-invalid @enderror"
@@ -42,8 +53,8 @@
                 <div class="form-group row">
                     <div class="col-sm-6 mb-3 mb-sm-0">
                         <input type="password"
-                            class="form-control form-control-user @error('password') is-invalid @enderror"
-                            id="password" name="password" placeholder="Password">
+                            class="form-control form-control-user @error('password') is-invalid @enderror" id="password"
+                            name="password" placeholder="Password">
                         @error('password')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
@@ -78,7 +89,7 @@
                 <p class="p-small">Copyright @ <?= date('Y') ?> <a
                         href="https://github.com/Zulfikar08/ukk-zulfikar-augusta">Envelope</a> - All rights
                     reserved</p>
-            </div> 
+            </div>
         </div>
     </div>
 </div>
