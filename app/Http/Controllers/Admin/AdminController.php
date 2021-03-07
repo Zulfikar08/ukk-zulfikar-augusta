@@ -14,8 +14,8 @@ class AdminController extends Controller
 {
     //
     public function index() {
-        $users = User::orderBy('id', 'DESC')->paginate(10);
         $menu = Auth::user()->roles->pluck('name');
+        $users = User::orderBy('id', 'DESC')->paginate(10);
         return view ('admin.auth.index', [
             'menu' => $menu,
             'users' => $users,

@@ -38,6 +38,9 @@ Route::namespace('Masyarakat')->group(function() {
     Route::middleware('role:masyarakat')->get('/masyarakat/dashboard', 'DashboardController@index')->name('masyarakat/dashboard');
     //Time Line
     Route::middleware('role:masyarakat')->get('/masyarakat/time-line', 'MasyarakatController@time_line')->name('masyarakat/time-line');
+    //Edit Profile
+    Route::middleware('role:masyarakat')->get('/masyarakat/profile/', 'MasyarakatController@edit')->name('masyarakat/edit');
+    Route::middleware('role:masyarakat')->get('/masyarakat/profile/{user}/kirim', 'MasyarakatController@update')->name('masyarakat/edit/kirim');
     //Tulis Pengaduan
     Route::middleware('role:masyarakat')->get('/masyarakat/tulis-aduan', 'MasyarakatController@index')->name('tulis-aduan');
     Route::middleware('role:masyarakat')->post('/masyarakat/tulis-aduan/kirim', 'MasyarakatController@store')->name('tulis-aduan/kirim');

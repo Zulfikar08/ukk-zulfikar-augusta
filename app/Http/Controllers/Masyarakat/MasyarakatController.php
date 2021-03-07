@@ -44,16 +44,25 @@ class MasyarakatController extends Controller
             'file' =>  'uploads/'.$namaGambar, 
             'status' => 'proses',
             ]);
-        return redirect('masyarakat/time-line')->with('success', 'Publish Compllited');
+        return redirect('masyarakat/time-line');
     }
 
     public function time_line()
     {
         $menu = Auth::user()->roles->pluck('name');
         $pengaduan = Pengaduan::orderBy('id', 'DESC')->paginate(50);
-        return view('masyarakat.auth.time-line',[
+        return view('masyarakat.time-line.index',[
             'pengaduan' => $pengaduan,
             'menu' => $menu,
+        ]);
+    }
+    public function edit(User $user)
+    {
+        $menu = Auth::user()->roles->pluck('name');
+        $user = Auth::user();
+        return view('masyarakat.auth.edit-profile',[
+            'menu' => $menu,
+            'user' => $user,
         ]);
     }
 }
