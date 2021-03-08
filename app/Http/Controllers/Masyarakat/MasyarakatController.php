@@ -51,7 +51,7 @@ class MasyarakatController extends Controller
     {
         $menu = Auth::user()->roles->pluck('name');
         $pengaduan = Pengaduan::orderBy('id', 'DESC')->paginate(50);
-        return view('masyarakat.time-line.index',[
+        return view('masyarakat.timeline.index',[
             'pengaduan' => $pengaduan,
             'menu' => $menu,
         ]);

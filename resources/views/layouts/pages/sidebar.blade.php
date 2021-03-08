@@ -30,7 +30,7 @@
 
     <!-- Nav Item - Pages Collapse Menu -->
     <li class="nav-item">
-        <a class="nav-link" href="charts.html">
+        <a class="nav-link" href="{{ route('admin/time-line') }}">
             <i class="fas fa-fw fa-home"></i>
             <span>Timeline</span></a>
     </li>
@@ -60,7 +60,7 @@
 
     <!-- Nav Item - Dashboard -->
     <li class="nav-item active">
-        <a class="nav-link" href="index.html">
+        <a class="nav-link" href="{{ route('petugas/dashboard') }}">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Dashboard</span></a>
     </li>
@@ -73,7 +73,7 @@
     </div>
 
     <li class="nav-item">
-        <a class="nav-link" href="charts.html">
+        <a class="nav-link" href="{{ route('petugas/time-line') }}">
             <i class="fas fa-fw fa-home"></i>
             <span>Timeline</span></a>
     </li>

@@ -15,10 +15,12 @@ class DashboardController extends Controller
         $menu = Auth::user()->roles->pluck('name');
         $jumlah_aduan = Pengaduan::all()->count();
         $jumlah_diproses = Pengaduan::where('status', 'proses')->count();
+        $jumlah_selesai = Pengaduan::where('status', 'selesai')->count();
         return view('admin.dashboard.index',[
             'menu' => $menu,
             'jumlah_aduan' => $jumlah_aduan,
             'jumlah_diproses' => $jumlah_diproses,
+            'jumlah_selesai' => $jumlah_selesai,
         ]);
     }
 }

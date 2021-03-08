@@ -14,8 +14,22 @@ class CreateTanggapansTable extends Migration
     public function up()
     {
         Schema::create('tanggapans', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->increments('id');
+            $table->integer('pengaduan_id')->unsigned();
+            $table->date('tgl_tanggapan');
+            $table->text('isi_tanggapan');
+            $table->integer('user_id')->unsigned();
             $table->timestamps();
+        });
+        Schema::table('tanggapans', function (Blueprint $table) {
+            $table->foreign('user_id')
+            ->references('id')
+            ->on('users')
+            ->onDelete('cascade');
+            $table->foreign('pengaduan_id')
+            ->references('id')
+            ->on('pengaduans')
+            ->onDelete('cascade');
         });
     }
 

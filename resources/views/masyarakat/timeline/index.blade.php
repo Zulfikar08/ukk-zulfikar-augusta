@@ -23,7 +23,6 @@
                     <small>{{ $item->tgl_pengaduan }}</small>
                 </p>
                 <p>{{ $item->isi_laporan }}</p>
-                <a target="_blank" rel="nofollow" href=""> Tanggapan &rarr;</a>
             </div>
         </div>
     @endforeach
