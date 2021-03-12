@@ -7,10 +7,26 @@
     <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
             class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
 </div>
+@if(!Auth::user()->email_verified_at)
+    <div class="alert alert-danger" role="alert">
+        Email anda belum terverifikasi! Cek email anda, atau
+        <form class="d-inline" method="POST" action="{{ route('verification.resend') }}">
+            @csrf
+            <button type="submit" class="btn btn-link p-0 m-0 align-baseline">{{ __('verifikasi ulang') }}</button>.
+        </form>
+    </div>
+@endif()
 
+@if (session('resent'))
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <strong>Email dikirim ulang!</strong> Silahkan cek email anda
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+@endif
 <!-- Content Row -->
 <div class="row">
-
     <!-- Earnings (Monthly) Card Example -->
     <div class="col-xl-3 col-md-6 mb-4">
         <div class="card border-left-primary shadow h-100 py-2">

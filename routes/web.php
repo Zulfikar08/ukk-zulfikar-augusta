@@ -1,5 +1,8 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Route;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -15,9 +18,15 @@
 Route::get('/', function () {
     return view('welcome');
 });
+//Google Auth
+// Route::get('google', 'GoogleController@redirect');
+// Route::get('google/callback', 'GoogleController@callback');
 
-Auth::routes();
+Auth::routes(['verify' => true]);
 Route::get('home', 'HomeController@index')->name('home');
+Route::namespace('Auth')->group(function() {
+    Route::middleware('verified')->get('verify', 'VerificationController@index');
+});
 
 // ADMIN
 Route::namespace('Admin')->group(function() {
