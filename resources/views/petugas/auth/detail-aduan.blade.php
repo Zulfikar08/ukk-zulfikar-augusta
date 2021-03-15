@@ -40,7 +40,7 @@
         @csrf
             <div class="form-group">
             <input type="hidden" name="pengaduan_id" value="{{ $pengaduan->id }}">
-                <input type="text" class="form-control" id="tanggapan" name="isi_tanggapan" aria-describedby="emailHelp"
+            <input type="text" class="form-control" id="tanggapan" name="isi_tanggapan" aria-describedby="emailHelp"
                     placeholder="Tulis tanggapan" autofocus>
             </div>
             <button type="submit" class="btn btn-primary float-right">kirim</button>

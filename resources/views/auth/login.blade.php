@@ -43,8 +43,11 @@
                 <button type="submit" class="btn btn-primary btn-user btn-block">
                     Login
                 </button>
+                <hr>
+                <a href="{{ route('google.login') }}" class="btn btn-google btn-user btn-block">
+                    <i class="fab fa-google fa-fw"></i> Login dengan Google
+                </a>
             </form>
-            <hr>
             @if (Route::has('password.request'))
             <div class="text-center">
                 <a class="small" href="{{ route('password.request') }}">Lupa Password?</a>
@@ -59,6 +62,7 @@
         </div>
     </div>
 </div>
+
 <div class="copyright">
     <div class="container">
         <div class="row">

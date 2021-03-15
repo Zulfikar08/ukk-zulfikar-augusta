@@ -15,7 +15,14 @@
             <button type="submit" class="btn btn-link p-0 m-0 align-baseline">{{ __('verifikasi ulang') }}</button>.
         </form>
     </div>
-@endif()
+@endif
+
+@if(!Auth::user()->nik OR phone)
+    <div class="alert alert-danger" role="alert">
+        Biodata anda belum lengkap! silahkan lengkapi di 
+            <a href="" class="btn btn-link p-0 m-0 align-baseline">{{ __('sini') }}</a>.
+    </div>
+@endif
 
 @if (session('resent'))
     <div class="alert alert-success alert-dismissible fade show" role="alert">

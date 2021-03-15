@@ -24,9 +24,13 @@ Route::get('/', function () {
 
 Auth::routes(['verify' => true]);
 Route::get('home', 'HomeController@index')->name('home');
+
 Route::namespace('Auth')->group(function() {
     Route::middleware('verified')->get('verify', 'VerificationController@index');
 });
+
+Route::get('login/google', 'Auth\SocialiteController@redirectToGoogle')->name('google.login');
+Route::get('callback/google', 'Auth\SocialiteController@handleGoogleCallback')->name('google.callback');
 
 // ADMIN
 Route::namespace('Admin')->group(function() {
@@ -35,8 +39,8 @@ Route::namespace('Admin')->group(function() {
     // timeline
     Route::middleware('role:admin')->get('/admin/time-line', 'AdminController@time_line')->name('admin/time-line');
     //tanggapan
-    Route::middleware('role:admin')->get('/admin/tanggapan/{id}', 'adminController@tanggapan')->name('admin/tanggapan');
-    Route::middleware('role:admin')->post('/admin/tanggapan/kirim', 'adminController@kirim_tanggapan')->name('admin/tanggapan/kirim');
+    Route::middleware('role:admin')->get('/admin/tanggapan/{id}', 'AdminController@tanggapan')->name('admin/tanggapan');
+    Route::middleware('role:admin')->post('/admin/tanggapan/kirim', 'AdminController@kirim_tanggapan')->name('admin/tanggapan/kirim');
     //aduan
     Route::middleware('role:admin')->get('/admin/data-user', 'AdminController@index')->name('admin/data-user');
     //detail
@@ -67,6 +71,6 @@ Route::namespace('Masyarakat')->group(function() {
     //Time Line
     Route::middleware('role:masyarakat')->get('/masyarakat/time-line', 'MasyarakatController@time_line')->name('masyarakat/time-line');
     //Edit Profile
-    Route::middleware('role:masyarakat')->get('/masyarakat/profile/', 'MasyarakatController@edit')->name('masyarakat/edit');
-    Route::middleware('role:masyarakat')->patch('/masyarakat/profile/{user}/kirim', 'MasyarakatController@update')->name('masyarakat/edit/kirim');
+    Route::middleware('role:masyarakat')->get('/masyarakat/profile/', 'MasyarakatController@profile')->name('masyarakat/profile');
+    Route::middleware('role:masyarakat')->patch('/masyarakat/profile/{user}/kirim', 'MasyarakatController@update')->name('masyarakat/profile/kirim');
 });
