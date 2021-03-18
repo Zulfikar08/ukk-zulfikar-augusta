@@ -17,7 +17,7 @@ class CreateUsersTable extends Migration
             $table->increments('id');
             $table->string('google_id')->nullable();
             $table->string('name');
-            $table->string('nik',64)->nullable();
+            $table->char('nik',64)->nullable();
             $table->string('email')->unique()->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('phone', 64)->nullable();

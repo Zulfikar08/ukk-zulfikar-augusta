@@ -62,7 +62,7 @@ class PetugasController extends Controller
         ]);
 
         $update = $pengaduan->find($request->pengaduan_id)->update([
-            'status' => 'selesai'
+            'status' => 'proses'
         ]);
 
         return redirect()->back();

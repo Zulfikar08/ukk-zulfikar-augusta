@@ -34,7 +34,7 @@
                     <!-- Card -->
                     <div class="card">
                         <div class="card-body">
-                            <h4 class="card-title">Create</h4>
+                            <h4 class="card-title">Menulis Aduan</h4>
                             <p>Anda bisa membuat suatu laporan aduan dengan cara mengisi formulir yang disediakan
                                 didalamnya lalu lakukan input data untuk melakukan laporan aduannya.</p>
                         </div>
@@ -44,7 +44,7 @@
                     <!-- Card -->
                     <div class="card">
                         <div class="card-body">
-                            <h4 class="card-title">Visibility</h4>
+                            <h4 class="card-title">Tanggapan</h4>
                             <p>Anda bisa melihat semua data aduan dari tiap-tiap masyarakat dan dapat melihat
                                 balasan apa saja yang dilakukan petugas pada suatu aduan.</p>
                         </div>
@@ -54,7 +54,7 @@
                     <!-- Card -->
                     <div class="card">
                         <div class="card-body">
-                            <h4 class="card-title">Comment</h4>
+                            <h4 class="card-title">Menanggapi</h4>
                             <p>Aduan yang anda kirimkan dapat dilihat oleh petugas serta dibalas apabila aduan itu
                                 telah terverifikasi oleh petugas, masyarakat bisa menanggapi.</p>
                         </div>
@@ -77,7 +77,6 @@
                         <h2>Tulis dan Tanggapi Aduan Dimanapun!</h2>
                         <p>Sudah sudah ada sekitar 12321 aduan dan tanggapan yang terdata di Envelope dan ada sekitar 
                             3211 dengan status selesai di tangani! Ayo gabung dan ikut berpartisipasi di Envelope</p>
-                        <a class="btn-solid-reg popup-with-move-anim" href="#details-lightbox-1">LIGHTBOX</a>
                     </div> <!-- end of text-container -->
                 </div> <!-- end of col -->
                 <div class="col-lg-6">
@@ -102,22 +101,21 @@
                 </div> <!-- end of col -->
                 <div class="col-lg-6">
                     <div class="text-container">
-                        <h2>Search For Optimization Wherever Is Possible</h2>
+                        <h2>Dikerjakan oleh masyrakat</h2>
                         <ul class="list-unstyled li-space-lg">
                             <li class="media">
                                 <i class="fas fa-check"></i>
-                                <div class="media-body">Basically we'll teach you step by step what you need to do</div>
+                                <div class="media-body">Semua aduan dikelola dan diproses oleh ahli dalam bidangnya</div>
                             </li>
                             <li class="media">
                                 <i class="fas fa-check"></i>
-                                <div class="media-body">In order to develop your company and reach new heights</div>
+                                <div class="media-body">Proses membuat aduan mudah tanpa basa basi</div>
                             </li>
                             <li class="media">
                                 <i class="fas fa-check"></i>
-                                <div class="media-body">Everyone will be pleased from stakeholders to employees</div>
+                                <div class="media-body">Diverifikasi keaslian laporannya oleh team</div>
                             </li>
                         </ul>
-                        <a class="btn-solid-reg popup-with-move-anim" href="#details-lightbox-2">LIGHTBOX</a>
                     </div> <!-- end of text-container -->
                 </div> <!-- end of col -->
             </div> <!-- end of row -->
@@ -250,7 +248,7 @@
                             <div class="card-subtitle">Jumlah masyarakt terdata</div>
                             <hr class="cell-divide-hr">
                             <div class="price">
-                                <span class="value">110</span>
+                                <span class="value">{{ $masyarakat }}</span>
                             </div>
                             <hr class="cell-divide-hr">
                             <div class="button-wrapper">
@@ -267,7 +265,7 @@
                             <div class="card-subtitle">Jumlah aduan terdata</div>
                             <hr class="cell-divide-hr">
                             <div class="price">
-                                <span class="value">119</span>
+                                <span class="value">{{ $pengaduan }}</span>
                             </div>
                             <hr class="cell-divide-hr">
                             <div class="button-wrapper">
@@ -279,15 +277,12 @@
 
                     <!-- Card-->
                     <div class="card">
-                        <div class="label">
-                            <p class="best-value">Profesional</p>
-                        </div>
                         <div class="card-body">
                             <div class="card-title">PETUGAS</div>
                             <div class="card-subtitle">Jumlah petugas terdata</div>
                             <hr class="cell-divide-hr">
                             <div class="price">
-                                <span class="value">12</span>
+                                <span class="value">{{ $admin }}</span>
                             </div>
                             <hr class="cell-divide-hr">
                             <div class="button-wrapper">

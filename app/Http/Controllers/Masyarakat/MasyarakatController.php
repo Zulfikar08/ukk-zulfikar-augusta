@@ -14,7 +14,7 @@ class MasyarakatController extends Controller
     //
     public function index() {
         $menu = Auth::user()->roles->pluck('name');
-        $pengaduan = Pengaduan::all();
+        $pengaduan = Pengaduan::where('user_id', Auth::id())->get();
         return view('masyarakat.auth.index',[
             'menu' => $menu,
             'pengaduan' => $pengaduan,
@@ -42,7 +42,7 @@ class MasyarakatController extends Controller
             'judul_laporan' => $request->judul_laporan,
             'isi_laporan' => $request->isi_laporan,
             'file' =>  'uploads/'.$namaGambar, 
-            'status' => 'proses',
+            'status' => 'pending',
             ]);
         return redirect('masyarakat/time-line');
     }
@@ -56,11 +56,11 @@ class MasyarakatController extends Controller
             'menu' => $menu,
         ]);
     }
-    public function edit(User $user)
+    public function profile(User $user)
     {
         $menu = Auth::user()->roles->pluck('name');
         $user = Auth::user();
-        return view('masyarakat.auth.edit-profile',[
+        return view('masyarakat.auth.profile',[
             'menu' => $menu,
             'user' => $user,
         ]);

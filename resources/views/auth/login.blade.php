@@ -24,7 +24,7 @@
                 </div>
 
                 <div class="form-group">
-                    <input type="password" class="form-control form-control-user @error('email') is-invalid @enderror"
+                    <input type="password" class="form-control form-control-user @error('password') is-invalid @enderror"
                         id="password" name="password" placeholder="Password">
                     @error('password')
                     <span class="invalid-feedback" role="alert">

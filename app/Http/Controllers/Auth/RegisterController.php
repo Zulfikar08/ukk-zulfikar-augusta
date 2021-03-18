@@ -51,17 +51,16 @@ class RegisterController extends Controller
     {
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
-            'phone' => ['required', 'max:13'],
-            'nik' => ['required', 'max:16'],
+            'phone' => ['required', 'digits_between:11,13'],
+            'nik' => ['required', 'digits:16'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ], [
             'name.required' => 'Nama harus diisi!',
             'phone.required' => 'Nomor telpon harus diisi!',
-            'phone.integer' => 'Nomor telpon harus berupa angka!',
-            'phone.max' => 'Nomor telpon maksimal 13 karakter!',
+            'phone.digits_between' => 'Nomor telpon maksimal 13 karakter!',
             'nik.required' => 'Nik harus diisi!',
-            'nik.max' => 'Nik maksimal 16 karakter!',
+            'nik.digits' => 'Nik maksimal 16 karakter!',
             'email.required' => 'Email harus diisi!',
             'email.email' => 'Email harus berupa email!',
             'email.unique' => 'Email sudah terdaftar!',

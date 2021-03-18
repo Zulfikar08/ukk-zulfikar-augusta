@@ -44,6 +44,7 @@ class LoginController extends Controller
         //
         if ($user->hasrole('admin')) {
             return redirect()->route('admin/dashboard');
+           
         }
         elseif ($user->hasrole('petugas')) {
             return redirect()->route('petugas/dashboard');

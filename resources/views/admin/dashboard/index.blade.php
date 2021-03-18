@@ -35,7 +35,7 @@
                     <div class="col mr-2">
                         <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                             Pending Verifikasi</div>
-                        <div class="h5 mb-0 font-weight-bold text-gray-800">2 Laporan</div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $jumlah_pending }}</div>
                     </div>
                     <div class="col-auto">
                         <i class="fas fa-clock fa-2x text-gray-300"></i>
@@ -96,34 +96,37 @@
         <!-- Illustrations -->
         <div class="card shadow mb-4">
             <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-primary">Zulfikar Augusta - Masyarakat</h6>
+                <h6 class="m-0 font-weight-bold text-primary">Welcome to ENVELOPE</h6>
             </div>
             <div class="card-body">
                 <div class="text-center">
                     <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 25rem;"
                         src="{{ url('sb_admin/img/undraw_posting_photo.svg') }}" alt="">
                 </div>
-                <p>Halo pak, saya ingin mengadukan, a
-                    constantly updated collection of beautiful svg images that you can use
-                    completely free and without attribution!</p>
-                <a target="_blank" rel="nofollow" href="https://undraw.co/">Tanggapi &rarr;</a>
+                <p>Selamat datang di Envelope! Envelope adalah aplikasi penyampaian pengaduan masyarkat
+                berbasis digital</p>
             </div>
         </div>
+    </div>
 
-        <!-- Approach -->
+    <div class="col-lg-6">
         <div class="card shadow mb-4">
             <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-primary">Development Approach</h6>
+                <h6 class="m-0 font-weight-bold text-primary">Peraturan</h6>
             </div>
             <div class="card-body">
-                <p>SB Admin 2 makes extensive use of Bootstrap 4 utility classes in order to reduce
-                    CSS bloat and poor page performance. Custom CSS classes are used to create
-                    custom components and custom utility classes.</p>
-                <p class="mb-0">Before working with this theme, you should become familiar with the
-                    Bootstrap framework, especially the utility classes.</p>
+                <p> <strong>Ada beberapa peraturan di envelope, diantaranya :</strong> </p>
+                <ul class="list-group">
+                    <li class="list-group-item">Dilarang menulis aduan palsu</li>
+                    <li class="list-group-item">Dilarangan menggunakan kalimat/kata kasar</li>
+                    <li class="list-group-item">Dilarang membuat aduan yang bersifat sarkas kepada pihak atau golongan manapun</li>
+                </ul>
+                <p class="m-2">Bagi yang melanggar akan dikenakan sanksi, seperti akun dinonaktifkan atau diban secara permanent
+                dari Envelope</p>
             </div>
         </div>
-
     </div>
+        <!-- Approach -->
+
 </div>
 @endsection

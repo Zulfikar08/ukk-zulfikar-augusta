@@ -31,8 +31,13 @@
                     </div>
                     <div class="form-group">
                         <label for="nik">NIK</label>
-                        <input type="text" class="form-control" id="nik" name="nik" aria-describedby="emailHelp"
+                        <input type="text" class="form-control @error('nik') is-invalid @enderror" id="nik" name="nik" aria-describedby="emailHelp"
                             value="{{ Auth::user()->nik }}" readonly>
+                        @error('nik')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                        @enderror
                     </div>
                     <div class="form-group">
                         <label for="isi_laporan">Isi Laporan</label>
@@ -79,11 +84,21 @@
                         <tr>
                             <th scope="row">{{ $loop->iteration }}</th>
                             <td>{{ $item->judul_laporan }}</td>
-                            <td><span class="badge badge-warning">pending</span></td>
                             <td>
+                                @if($item->status == 'pending')
+                                <span class="badge badge-warning">{{ $item->status }}</span>
+                                @elseif($item->status == 'proses')
+                                <span class="badge badge-primary">{{ $item->status }}</span>
+                                @else
+                                <span class="badge badge-success">{{ $item->status }}</span>
+                                @endif
+                            </td>
+                            <td>
+                                @if($item->status != 'selesai')
                                 <a href="" class="badge badge-primary">
                                     edit
                                 </a>
+                                @endif
                                 <a href="" class="badge badge-danger">
                                     delete
                                 </a>

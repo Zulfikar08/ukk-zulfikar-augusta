@@ -37,7 +37,7 @@
     <li class="nav-item">
         <a class="nav-link" href="charts.html">
             <i class="fas fa-fw fa-key"></i>
-            <span>Verifikasi</span></a>
+            <span>Pending Verifikasi</span></a>
     </li>
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true"
