@@ -8,6 +8,7 @@ use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\DB;
 
 class MasyarakatController extends Controller
 {
@@ -54,6 +55,24 @@ class MasyarakatController extends Controller
         return view('masyarakat.timeline.index',[
             'pengaduan' => $pengaduan,
             'menu' => $menu,
+        ]);
+    }
+
+    public function tanggapan($id) {
+        $menu = Auth::user()->roles->pluck('name');
+        $pengaduan = Pengaduan::find($id);
+        $user = Auth::user();
+        $tanggapan = DB::table('tanggapans')
+        ->join('users', 'users.id', '=', 'tanggapans.user_id')
+        ->join('pengaduans', 'pengaduans.id', '=', 'tanggapans.pengaduan_id')
+        ->select('users.*', 'pengaduans.*', 'tanggapans.*', DB::raw('users.name AS nama_user'))
+        ->where('pengaduan_id', $id)
+        ->get();
+        return view('masyarakat.auth.tanggapan', [
+            'menu' => $menu,
+            'pengaduan' => $pengaduan,
+            'user' => $user,
+            'tanggapan' => $tanggapan
         ]);
     }
     public function profile(User $user)

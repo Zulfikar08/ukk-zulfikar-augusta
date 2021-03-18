@@ -23,6 +23,7 @@
                     <small>{{ $item->tgl_pengaduan }}</small>
                 </p>
                 <p>{{ $item->isi_laporan }}</p>
+                <a href="{{ route('masyarakat/tanggapan', $item->id) }}"> Tanggapan &rarr;</a>
             </div>
         </div>
     @endforeach

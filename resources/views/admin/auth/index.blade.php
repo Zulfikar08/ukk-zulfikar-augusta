@@ -10,7 +10,7 @@
 </div>
 
 <div class="row">
-    <div class="col-lg-6 mb-4">
+    <div class="col-lg-9 mb-4">
         <div class="card shadow mb-4">
             <div class="card-header py-3">
                 <h6 class="m-0 font-weight-bold text-primary">Tabel data User</h6>
@@ -33,8 +33,10 @@
                                 <td>{{ $item->name }}</td>
                                 <td>{{ implode(', ', $item->roles()->get()->pluck('name')->toArray()) }}</td>
                                 <td>
-                                    <a class="badge badge-info" href="{{ route('admin/detail-user', $item->id) }}">detail</a>
-                                    <a class="badge badge-danger" href="{{ route('admin/nonaktif-user', $item->id) }}">nonaktif</a>
+                                    <a class="badge badge-info"
+                                        href="{{ route('admin/detail-user', $item->id) }}">detail</a>
+                                    <a class="badge badge-danger"
+                                        href="{{ route('admin/nonaktif-user', $item->id) }}">nonaktif</a>
                                 </td>
                             </tr>
                             @endforeach
@@ -45,5 +47,6 @@
             </div>
         </div>
     </div>
+    
 </div>
 @endsection

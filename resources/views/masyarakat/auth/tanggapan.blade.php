@@ -49,27 +49,6 @@
         @else
         <p class="text-center">Tidak Ada tanggapan</p>
         @endif
-        <form method="POST" action="{{ route('petugas/tanggapan/kirim') }}">
-            @csrf
-            <div class="form-group">
-                <input type="hidden" name="pengaduan_id" value="{{ $pengaduan->id }}">
-                <input type="text" class="form-control" id="tanggapan" name="isi_tanggapan" aria-describedby="emailHelp"
-                    placeholder="Tulis tanggapan" autofocus>
-            </div>
-            <div class="row">
-                <div class="col-sm-6">
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="selesai" name="proses" id="check-proses">
-                        <label class="form-check-label" for="check-proses">
-                            Selesai
-                        </label>
-                    </div>
-                </div>
-                <div class="col-sm-6">
-                    <button type="submit" class="btn btn-primary float-right">kirim</button>
-                </div>
-            </div>
-        </form>
     </div>
 
 

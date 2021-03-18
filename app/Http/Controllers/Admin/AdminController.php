@@ -10,7 +10,7 @@ use App\User;
 use App\Pengaduan;
 use App\Tanggapan;
 use Carbon\Carbon;
-use DB;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
@@ -18,7 +18,7 @@ class AdminController extends Controller
     //
     public function index() {
         $menu = Auth::user()->roles->pluck('name');
-        $users = User::orderBy('id', 'DESC')->paginate(10);
+        $users = User::orderBy('id', 'ASC')->paginate(10);
         return view ('admin.auth.index', [
             'menu' => $menu,
             'users' => $users,
@@ -27,7 +27,9 @@ class AdminController extends Controller
 
     public function time_line() {
         $menu = Auth::user()->roles->pluck('name');
-        $pengaduan = Pengaduan::orderBy('id', 'DESC')->paginate(50);
+        $pengaduan = Pengaduan::orderBy('id', 'ASC')->paginate(50);
+        // Alternative
+        // $pengaduan = Pengaduan::where('status', '!=' ,'reject')->paginate(50);
         return view('admin.timeline.index', [
             'menu' => $menu,
             'pengaduan' => $pengaduan

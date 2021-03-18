@@ -9,7 +9,7 @@ use App\Pengaduan;
 use App\User;
 use App\Tanggapan;
 use Illuminate\Support\Carbon;
-use DB;
+use Illuminate\Support\Facades\DB;
 
 class PetugasController extends Controller
 {
