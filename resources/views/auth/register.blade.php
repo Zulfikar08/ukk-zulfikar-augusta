@@ -15,10 +15,10 @@
                 <div class="form-group">
                     <input type="text" class="form-control form-control-user @error('name') is-invalid @enderror"
                         id="name" name="name" placeholder="Nama Lengkap" value="{{ old('name') }}" autofocus>
+                    @error('name')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $errors->first('name') }}</strong>
                     </span>
-                    @error('name')
                     @enderror
                 </div>
                 <div class="form-group row">

@@ -21,7 +21,7 @@
                     <li class="list-group-item">NO.TELP : {{ $user->phone }}</li>
                     <li class="list-group-item">Email : {{ $user->email }}</li>
                     <li class="list-group-item">
-                    <form action="{{ route('admin/nonaktif-user', $user->id) }}" method="post">
+                    <form action="{{ route('petugas/nonaktif-user', $user->id) }}" method="post">
                         @method('delete')
                         @csrf
                         <button type="submit" class="btn btn-danger" onclick="return confirm('Yakin?');">nonaktif</button>

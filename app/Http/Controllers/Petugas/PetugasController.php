@@ -14,8 +14,16 @@ use Illuminate\Support\Facades\DB;
 class PetugasController extends Controller
 {
     //
-    public function index() {
-        
+    public function index() 
+    {
+        $menu = Auth::user()->roles->pluck('name');
+        $users = User::orderBy('id', 'ASC')->paginate(10);
+        $nonaktif = User::onlyTrashed()->orderBy('id', 'ASC')->paginate(10);
+        return view ('petugas.auth.index', [
+            'menu' => $menu,
+            'users' => $users,
+            'nonaktif' => $nonaktif,
+        ]);
     }
 
     public function time_line() {
@@ -25,6 +33,30 @@ class PetugasController extends Controller
             'menu' => $menu,
             'pengaduan' => $pengaduan
         ]);
+    }
+
+    public function detail($id) 
+    {
+    $menu = Auth::user()->roles->pluck('name');
+    $pengaduan = Pengaduan::find($id);
+    $user = User::find($id);
+    return view('petugas.auth.detail', [
+        'menu' => $menu,
+        'user' => $user,
+        'pengaduan' => $pengaduan
+        ]);
+    }
+    public function nonaktif($id)
+    {
+        User::destroy($id);
+        return redirect('petugas/data-user')->with('status', 'User berhasil dinonaktifkan!');
+    }
+    public function aktifkan($id)
+    {
+        // 
+        $user = User::onlyTrashed()->where('id',$id);
+        $user->restore();
+        return redirect()->back()->with('status', 'User berhasil diaktifkan!');
     }
 
     public function tanggapan($id) {
@@ -50,6 +82,10 @@ class PetugasController extends Controller
         $request->validate([
             'isi_tanggapan' => 'required',
             'pengaduan_id' => 'required',
+            'status' => 'required'
+        ], [
+            'isi_tanggapan.required' => 'wajib diisi',
+            'status.required' => 'wajid diisi!',
         ]);
 
         
@@ -62,7 +98,7 @@ class PetugasController extends Controller
         ]);
 
         $update = $pengaduan->find($request->pengaduan_id)->update([
-            'status' => 'proses'
+            'status' => $request->status
         ]);
 
         return redirect()->back();

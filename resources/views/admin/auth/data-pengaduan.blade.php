@@ -1,10 +1,14 @@
 @extends('layouts.pages.app')
-@section('title', 'Envelope')
+@section('title', 'Envelope | Pengaduan')
 
 @section('content')
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
-    <h1 class="h3 mb-0 text-gray-800">Pending verifikasi</h1>
+    <h1 class="h3 mb-0 text-gray-800">Pengaduan</h1>
+    <a href="{{ route('admin/pengaduan-export') }}" class="d-sm-inline-block btn btn-sm btn-primary shadow-sm">
+        <i class="fas fa-download fa-sm text-white-50"></i>Generate Report
+    </a>
 </div>
+
 @if (session('status'))
 <div class="alert alert-success alert-dismissible fade show" role="alert">
     <strong>Berhasil!</strong> {{ session('status') }}
@@ -13,33 +17,14 @@
     </button>
 </div>
 @endif
-
+<!-- Content Row -->
 <div class="row">
-    <div class="col-lg-6 mb-2">
-        <form class="form-inline">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
-        </form>
-    </div>
-    <div class="col-lg-6 mb-2">
-        <div class="dropdown float-right">
-            <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton"
-                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Urutkan berdasarkan
-            </button>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <a class="dropdown-item" href="">Terbaru</a>
-                <a class="dropdown-item" href="#">Judul</a>
-            </div>
-        </div>
-    </div>
-</div>
 
-<div class="row">
-    <div class="col-lg mb-4">
+    <div class="col-lg-8 mb-4">
         <div class="card shadow mb-4">
-            <div class="card-header">
+            <div class="card-header py-3">
                 <h6 class="m-0 font-weight-bold text-primary">
+                    Data Pengaduan
                 </h6>
             </div>
             <div class="card-body">
@@ -49,8 +34,8 @@
                             <tr>
                                 <th>#</th>
                                 <th>Nama</th>
-                                <th>Judul Pengaduan</th>
-                                <th>Isi Pengaduan</th>
+                                <th>Judul</th>
+                                <th>Status</th>
                                 <th>Aksi</th>
                             </tr>
                         </thead>
@@ -60,10 +45,10 @@
                                 <td>{{ $loop->iteration }}</td>
                                 <td>{{ $item->users->name }}</td>
                                 <td>{{ $item->judul_laporan }}</td>
-                                <td>{{ Str::limit($item->isi_laporan, 50, '....') }}</td>
+                                <td>{{ $item->status }}</td>
                                 <td>
-                                    <a href="{{ route('admin/detail-verifikasi', $item->id) }}"
-                                        class="badge badge-primary">detail</a>
+                                    <a class="badge badge-info"
+                                        href="{{ route('admin/detail-aduan', $item->id) }}">detail</a>
                                 </td>
                             </tr>
                             @endforeach
@@ -74,5 +59,17 @@
             </div>
         </div>
     </div>
+
+    <div class="col-lg-4 mb-4">
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">Sortir</h6>
+            </div>
+            <div class="card-body">
+
+            </div>
+        </div>
+    </div>
+
 </div>
 @endsection

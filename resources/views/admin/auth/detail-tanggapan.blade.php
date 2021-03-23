@@ -1,9 +1,9 @@
 @extends('layouts.pages.app')
-@section('title', 'Envelope | Aduan')
+@section('title', 'Envelope | Tanggapan')
 
 @section('content')
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
-    <h1 class="h3 mb-0 text-gray-800">Detail Aduan</h1>
+    <h1 class="h3 mb-0 text-gray-800">Tanggapan</h1>
 </div>
 
 <!-- Content Row -->
@@ -26,11 +26,11 @@
                         <small>{{ $pengaduan->tgl_pengaduan }}</small>
                     </p>
                     @if($pengaduan->status == 'pending')
-                    <p class="badge badge-pill badge-warning mx-3">{{ $pengaduan->status }}</p>
+                    <p class="badge badge-warning mx-3">{{ $pengaduan->status }}</p>
                     @elseif($pengaduan->status == 'proses')
-                    <p class="badge badge-pill badge-primary mx-3">{{ $pengaduan->status }}</p>
+                    <p class="badge badge-primary mx-3">{{ $pengaduan->status }}</p>
                     @else
-                    <p class="badge badge-pill badge-success mx-3">{{ $pengaduan->status }}</p>
+                    <p class="badge badge-success mx-3">{{ $pengaduan->status }}</p>
                     @endif
                     <p>{{ $pengaduan->isi_laporan }}</p>
                 </div>
@@ -40,12 +40,12 @@
 
     <div class="col-lg-4 mb-4">
         @if(count($tanggapan) > 0)
-        @foreach( $tanggapan as $item )
-        <ul class="list-group mb-3">
-            <li class="list-group-item active">{{ $item->name }}</li>
-            <li class="list-group-item">{{ $item->isi_tanggapan }}</li>
-        </ul>
-        @endforeach
+            @foreach( $tanggapan as $item )
+            <ul class="list-group mb-2">
+                <li class="list-group-item active">{{ $item->name }}</li>
+                <li class="list-group-item">{{ $item->isi_tanggapan }}</li>
+            </ul>
+            @endforeach
         @else
         <p class="text-center">Tidak Ada tanggapan</p>
         @endif
@@ -53,28 +53,16 @@
             @csrf
             <div class="form-group">
                 <input type="hidden" name="pengaduan_id" value="{{ $pengaduan->id }}">
-                <input type="text" class="form-control @error('isi_tanggapan') is-invalid @enderror" id="tanggapan" name="isi_tanggapan" aria-describedby="emailHelp"
+                <input type="text" class="form-control" id="tanggapan" name="isi_tanggapan" aria-describedby="emailHelp"
                     placeholder="Tulis tanggapan" autofocus>
-                @error('isi_tanggapan')
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                @enderror
             </div>
             <div class="row">
                 <div class="col-sm-6">
-                    <div class="form-group">
-                        <select class="form-control @error('status') is-invalid @enderror" id="status" name="status">
-                            <option value=""><i>status</i></option>
-                            <option value="pending">Pending</option>
-                            <option value="proses">Proses</option>
-                            <option value="selesai">Selesai</option>
-                        </select>
-                        @error('status')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="selesai" name="proses" id="check-proses">
+                        <label class="form-check-label" for="check-proses">
+                            Selesai
+                        </label>
                     </div>
                 </div>
                 <div class="col-sm-6">

@@ -37,7 +37,13 @@
     <li class="nav-item">
         <a class="nav-link" href="{{ route('admin/verifikasi') }}">
             <i class="fas fa-fw fa-key"></i>
-            <span>Pending Verifikasi</span></a>
+            <span>Pending Verifikasi</span>
+        </a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="{{ route('admin/petugas') }}">
+            <i class="fas fa-fw fa-users"></i>
+            <span>Petugas Management</span></a>
     </li>
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true"
@@ -48,8 +54,8 @@
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Custom Components:</h6>
-                <a class="collapse-item" href="{{ route('admin/data-user') }}">Data user</a>
-                <a class="collapse-item" href="cards.html">Data Pengaduan</a>
+                <a class="collapse-item" href="{{ route('admin/data-user') }}">Data User</a>
+                <a class="collapse-item" href="{{ route('admin/pengaduan') }}">Data Pengaduan</a>
             </div>
         </div>
     </li>
@@ -78,12 +84,12 @@
             <span>Timeline</span></a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="charts.html">
+        <a class="nav-link" href="{{ route('petugas/verifikasi') }}">
             <i class="fas fa-fw fa-comments"></i>
-            <span>Tanggapan</span></a>
+            <span>Pending Verifikasi</span></a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="tables.html">
+        <a class="nav-link" href="{{ route('petugas/data-user') }}">
             <i class="fas fa-fw fa-users"></i>
             <span>User manajement</span></a>
     </li>

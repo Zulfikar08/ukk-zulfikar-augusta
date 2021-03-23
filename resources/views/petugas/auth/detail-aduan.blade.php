@@ -53,16 +53,28 @@
             @csrf
             <div class="form-group">
                 <input type="hidden" name="pengaduan_id" value="{{ $pengaduan->id }}">
-                <input type="text" class="form-control" id="tanggapan" name="isi_tanggapan" aria-describedby="emailHelp"
+                <input type="text" class="form-control @error('isi_tanggapan') is-invalid @enderror" id="tanggapan" name="isi_tanggapan" aria-describedby="emailHelp"
                     placeholder="Tulis tanggapan" autofocus>
+                @error('isi_tanggapan')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
             </div>
             <div class="row">
                 <div class="col-sm-6">
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="selesai" name="proses" id="check-proses">
-                        <label class="form-check-label" for="check-proses">
-                            Selesai
-                        </label>
+                    <div class="form-group">
+                        <select class="form-control @error('status') is-invalid @enderror" id="status" name="status">
+                            <option value=""><i>status</i></option>
+                            <option value="pending">Pending</option>
+                            <option value="proses">Proses</option>
+                            <option value="selesai">Selesai</option>
+                        </select>
+                        @error('status')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
                     </div>
                 </div>
                 <div class="col-sm-6">

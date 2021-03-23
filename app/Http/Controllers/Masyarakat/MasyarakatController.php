@@ -23,7 +23,6 @@ class MasyarakatController extends Controller
     }
 
     public function store(Request $request) {
-
         $request->validate([
             'judul_laporan' => 'required|max:64',
             'isi_laporan' => 'required',
@@ -46,6 +45,41 @@ class MasyarakatController extends Controller
             'status' => 'pending',
             ]);
         return redirect('masyarakat/time-line');
+    }
+
+    public function edit($id) {
+        $menu = Auth::user()->roles->pluck('name');
+        $pengaduan = Pengaduan::find($id);
+        return view('masyarakat.auth.edit',[
+            'menu' => $menu,
+            'pengaduan' => $pengaduan
+        ]);
+    }
+
+    public function edit_kirim(Request $request, $id) {
+        $request->validate([
+            'judul_laporan' => 'required|max:64',
+            'isi_laporan' => 'required',
+            'file' => 'required|image|mimes:jpeg,jpg,png|max:4000',
+            'nik' => 'required',
+            'status' => 'required',
+        ]);
+
+        $files = $request->file;
+        $namaGambar = date('YmdHis') . "." . $files->getClientOriginalExtension();
+        $lokasiGambar = 'uploads/'; // upload path
+        $files->move($lokasiGambar, $namaGambar);
+        
+        Pengaduan::find($id)->update([
+            'user_id' => Auth::id(),
+            'tgl_pengaduan' => Carbon::now(),
+            'nik' => $request->nik,
+            'judul_laporan' => $request->judul_laporan,
+            'isi_laporan' => $request->isi_laporan,
+            'file' =>  'uploads/'.$namaGambar, 
+            'status' => $request->status,
+            ]);
+        return redirect()->back()->with('status', 'Update berhasil');
     }
 
     public function time_line()

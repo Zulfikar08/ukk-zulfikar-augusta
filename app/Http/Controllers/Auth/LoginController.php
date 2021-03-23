@@ -41,18 +41,22 @@ class LoginController extends Controller
     }
     protected function authenticated(Request $request, $user)
     {
-        //
-        if ($user->hasrole('admin')) {
-            return redirect()->route('admin/dashboard');
-           
+        if($user->deleted_at == null)
+        {
+            if ($user->hasrole('admin')) {
+                return redirect()->route('admin/dashboard');
+            }
+            elseif ($user->hasrole('petugas')) {
+                return redirect()->route('petugas/dashboard');
+            }
+            elseif ($user->hasrole('masyarakat')) {
+                return redirect()->route('masyarakat/dashboard');
+            } else {
+                return false;
+            }
         }
-        elseif ($user->hasrole('petugas')) {
-            return redirect()->route('petugas/dashboard');
-        }
-        elseif ($user->hasrole('masyarakat')) {
-            return redirect()->route('masyarakat/dashboard');
-        } else {
-            return false;
-        }
+        else {
+            return view('auth.user-blocked');
+        }    
     }
 }
