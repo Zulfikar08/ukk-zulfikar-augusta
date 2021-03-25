@@ -10,6 +10,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Spatie\Permission\Models\Role;
+use App\Http\Requests\UpdateProfileRequest;
 use App\User;
 use App\Pengaduan;
 use App\Tanggapan;
@@ -40,11 +41,11 @@ class AdminController extends Controller
         ]);
     }
 
-    public function update() {
-        $menu = Auth::user()->roles->pluck('name');
-        return view ('admin.auth.index', [
-            'menu' => $menu,
-        ]);
+    public function update(UpdateProfileRequest $request) {
+        $request->user()->update(
+            $request->all()
+        );
+        return redirect()->back()->with('status', 'Data berhasil diupdate');
     }
 
     public function search(Request $request)
@@ -179,7 +180,7 @@ class AdminController extends Controller
         { 
             $q->where("name", "petugas"); 
         })->paginate(50);
-        
+
         $admin = User::whereHas("roles", function($q)
         { 
             $q->where("name", "admin"); 

@@ -78,8 +78,19 @@
             <div class="card-header py-3">
                 <h6 class="m-0 font-weight-bold text-primary">Your profile</h6>
             </div>
-            <div class="card-body">
-                
+            <div class="card-body text-center">
+                <h3> <strong>{{ $user->name }}</strong> </h3>
+                <h5> <small>{{ implode(', ', $user->roles()->get()->pluck('name')->toArray()) }}</small> </h5>
+
+                <hr>
+                <a href="">{{ $user->email }}</a>
+                <hr>
+                {{ $user->nik }}
+                <hr>
+                <a href="">{{ $user->phone }}</a>
+            </div>
+            <div class="card-footer text-center">
+                <small> since : {{ $user->created_at }}</small>
             </div>
         </div>
     </div>
