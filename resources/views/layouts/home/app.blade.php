@@ -63,7 +63,7 @@
                             <h1><span class="turquoise">Welcome to Envelope</span></h1>
                             <p class="p-large">
                                 Envelope adalah aplikasi penampung aduan masyarakat untuk apa saja yang terjadi
-                                di wilayah Subang.
+                                di wilayah Kecamatan Cibogo, Kabupaten Subang.
                                 Dikelola oleh masyarakat dan disuarakan oleh masyarakat!
                             </p>
                             @guest

@@ -9,7 +9,7 @@ class Pengaduan extends Model
     //
     protected $table = "pengaduans";
     protected $fillable = [
-        'id','tgl_pengaduan', 'judul_laporan', 'isi_laporan', 'file', 'status', 'user_id'
+        'id','tgl_pengaduan', 'judul_laporan', 'isi_laporan', 'file', 'lokasi', 'status', 'user_id'
     ];
     public function users()
     {

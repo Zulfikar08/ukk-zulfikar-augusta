@@ -20,6 +20,7 @@ class CreatePengaduansTable extends Migration
             $table->text('isi_laporan');
             $table->string('file');
             $table->enum('status', ['pending', 'proses', 'selesai', 'reject']);
+            $table->string('lokasi');
             $table->integer('user_id')->unsigned();
             $table->timestamps();
         });

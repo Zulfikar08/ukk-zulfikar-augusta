@@ -11,7 +11,7 @@
     <div class="col-lg-8 mb-4">
     @foreach( $pengaduan as $item )
         @if($item->status != 'reject')
-            @if($item->users['name'] != null)
+            @if($item->users['name'])
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
                     @if($item->status == 'proses')
@@ -33,6 +33,9 @@
                     <p>{{ $item->isi_laporan }}</p>
                     <a href="{{ route('admin/tanggapan', $item->id) }}"> Tanggapi &rarr;</a>
                 </div>
+                <div class="card-footer text-center">
+                    <small> Dibuat pada : {{ $pengaduan->tgl_pengaduan }}</small>
+                </div>
             </div>
             @endif
         @endif
@@ -42,9 +45,16 @@
     <div class="col-lg-4 mb-4">
         <div class="card shadow mb-4">
             <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-primary">Sortir</h6>
+                <h6 class="m-0 font-weight-bold text-primary">Information</h6>
             </div>
             <div class="card-body">
+                <div class="row">
+                    <div class="text-center">
+                        <div class="badge badge-pill badge-warning">Pending</div>
+                        <div class="badge badge-pill badge-primary">Proses</div>
+                        <div class="badge badge-pill badge-success">Selesai</div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

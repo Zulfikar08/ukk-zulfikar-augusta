@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Desa;
 use App\Exports\UserExport;
 use App\Exports\PengaduanExport;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Validator;
+use Spatie\Permission\Models\Role;
 use App\User;
 use App\Pengaduan;
 use App\Tanggapan;
@@ -27,6 +28,22 @@ class AdminController extends Controller
             'menu' => $menu,
             'users' => $users,
             'nonaktif' => $nonaktif,
+        ]);
+    }
+
+    public function profile() {
+        $menu = Auth::user()->roles->pluck('name');
+        $user = Auth::user();
+        return view ('admin.profile.index', [
+            'menu' => $menu,
+            'user' => $user
+        ]);
+    }
+
+    public function update() {
+        $menu = Auth::user()->roles->pluck('name');
+        return view ('admin.auth.index', [
+            'menu' => $menu,
         ]);
     }
 
@@ -157,9 +174,20 @@ class AdminController extends Controller
     public function petugas()
     {
         $menu = Auth::user()->roles->pluck('name');
-        $petugas = User::orderBy('id', 'ASC')->paginate(50);
+
+        $petugas = User::whereHas("roles", function($q)
+        { 
+            $q->where("name", "petugas"); 
+        })->paginate(50);
+        
+        $admin = User::whereHas("roles", function($q)
+        { 
+            $q->where("name", "admin"); 
+        })->paginate(50);
+        // $petugas = User::orderBy('id', 'ASC')->paginate(50);
         return view('admin.auth.data-petugas', [
             'petugas' => $petugas,
+            'admin' => $admin,
             'menu' => $menu
         ]);
     }
@@ -172,6 +200,7 @@ class AdminController extends Controller
             'nik' => ['required', 'digits:16'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'role' => ['required'],
         ], [
             'name.required' => 'Nama harus diisi!',
             'phone.required' => 'Nomor telpon harus diisi!',
@@ -185,7 +214,7 @@ class AdminController extends Controller
             'password.min' => 'Password minimal 8 karakter!',
             'password.confirmed' => 'Password tidak sama!',
         ]);
-
+        
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
@@ -193,19 +222,43 @@ class AdminController extends Controller
             'phone' => $request->phone,
             'nik' => $request->nik,
             'password' => Hash::make($request['password']),
-        ]);
-
-        $user->assignRole('petugas');
+            ]);
+        $role = $request->role;
+        $user->assignRole($role);
         return redirect('admin/petugas')->with('status', 'Data pengaduan berhasil ditambah!');
     }
 
     public function pengaduan()
     {
         $menu = Auth::user()->roles->pluck('name');
+        $desa = Desa::all();
         $pengaduan = Pengaduan::orderBy('id', 'ASC')->paginate(10);
         return view('admin.auth.data-pengaduan', [
             'menu' => $menu,
-            'pengaduan' => $pengaduan
+            'pengaduan' => $pengaduan,
+            'desa' => $desa
+        ]);
+    }
+
+    public function cetak_aduan_pertanggal($tglAwal, $tglAkhir) 
+    {
+        $pengaduan = Pengaduan::with('users')->whereBetween('tgl_pengaduan',[$tglAwal , $tglAkhir])->get();
+        $tglAwal = $tglAwal;
+        $tglAkhir = $tglAkhir;
+        return view('admin.auth.report-pengaduan', [
+            'pengaduan' => $pengaduan,
+            'tglAwal' => $tglAwal,
+            'tglAkhir' => $tglAkhir,
+        ]);
+    }
+
+    public function cetak_aduan_lokasi($lokasi) 
+    {
+        $pengaduan = Pengaduan::with('users')->where('lokasi',[$lokasi])->get();
+        $lokasi = $lokasi;
+        return view('admin.auth.report-pengaduan-lokasi', [
+            'pengaduan' => $pengaduan,
+            'lokasi' => $lokasi,
         ]);
     }
     

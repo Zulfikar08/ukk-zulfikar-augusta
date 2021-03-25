@@ -18,10 +18,10 @@ class CreateUsersTable extends Migration
             $table->string('google_id')->nullable();
             $table->string('name');
             $table->char('nik',64)->nullable();
-            $table->string('email')->unique()->nullable();
+            $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
-            $table->string('phone', 64)->nullable();
-            $table->string('password')->nullable();
+            $table->char('phone', 64)->nullable();
+            $table->string('password');
             $table->rememberToken();
             $table->timestamps();
         });

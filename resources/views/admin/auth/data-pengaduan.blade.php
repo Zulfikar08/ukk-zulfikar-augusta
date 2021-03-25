@@ -4,9 +4,6 @@
 @section('content')
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
     <h1 class="h3 mb-0 text-gray-800">Pengaduan</h1>
-    <a href="{{ route('admin/pengaduan-export') }}" class="d-sm-inline-block btn btn-sm btn-primary shadow-sm">
-        <i class="fas fa-download fa-sm text-white-50"></i>Generate Report
-    </a>
 </div>
 
 @if (session('status'))
@@ -19,8 +16,65 @@
 @endif
 <!-- Content Row -->
 <div class="row">
-
-    <div class="col-lg-8 mb-4">
+    <div class="col-lg-6">
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">
+                    Cetak pertanggal
+                </h6>
+            </div>
+            <div class="card-body">
+                <div class="form-group row">
+                    <label for="tgl-awal" class="col-4 col-form-label">Dari</label>
+                    <div class="col-8">
+                        <input class="form-control" name="tglAwal" type="date" value="2021-01-01" id="tglAwal">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="tgl-akhir" class="col-4 col-form-label">Sampai</label>
+                    <div class="col-8">
+                        <input class="form-control" name="tglAkhir" type="date" value="2021-01-01" id="tglAkhir">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <a href=""
+                        onclick="this.href='/admin/cetak-aduan-pertanggal/'+ document.getElementById('tglAwal').value + '/' + document.getElementById('tglAkhir').value"
+                        target="_blank" class="btn btn-primary btn-block">Export</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-6">
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">
+                    Cetak berdasarkan lokasi
+                </h6>
+            </div>
+            <div class="card-body">
+                <div class="form-group row">
+                    <label for="lokasi" class="col-4 col-form-label">Desa</label>
+                    <div class="col-8">
+                        <select class="form-control @error('lokasi') is-invalid @enderror" id="lokasi" name="lokasi">
+                            @foreach( $desa as $item )
+                            <option value="{{ $item->nama_desa }}">{{ $item->nama_desa }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <a href=""
+                        onclick="this.href='/admin/cetak-aduan-lokasi/'+ document.getElementById('lokasi').value"
+                        target="_blank" class="btn btn-primary btn-block">Export</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+</div>
+<div class="row">
+    <div class="col-lg-12 mb-4">
         <div class="card shadow mb-4">
             <div class="card-header py-3">
                 <h6 class="m-0 font-weight-bold text-primary">
@@ -35,6 +89,7 @@
                                 <th>#</th>
                                 <th>Nama</th>
                                 <th>Judul</th>
+                                <th>Lokasi</th>
                                 <th>Status</th>
                                 <th>Aksi</th>
                             </tr>
@@ -45,6 +100,7 @@
                                 <td>{{ $loop->iteration }}</td>
                                 <td>{{ $item->users->name }}</td>
                                 <td>{{ $item->judul_laporan }}</td>
+                                <td>{{ $item->lokasi }}</td>
                                 <td>{{ $item->status }}</td>
                                 <td>
                                     <a class="badge badge-info"
@@ -59,17 +115,5 @@
             </div>
         </div>
     </div>
-
-    <div class="col-lg-4 mb-4">
-        <div class="card shadow mb-4">
-            <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-primary">Sortir</h6>
-            </div>
-            <div class="card-body">
-
-            </div>
-        </div>
-    </div>
-
 </div>
 @endsection

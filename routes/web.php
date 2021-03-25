@@ -34,11 +34,15 @@ Route::get('callback/google', 'Auth\SocialiteController@handleGoogleCallback')->
 
 // ADMIN
 Route::namespace('Admin')->group(function() {
-    //Dashboard
+    // dashboard
     Route::middleware('role:admin')->get('/admin/dashboard', 'DashboardController@index')->name('admin/dashboard');
+    // profile
+    Route::middleware('role:admin')->get('/admin/profile', 'AdminController@profile')->name('admin/profile');
+    Route::middleware('role:admin')->patch('/admin/profile/update', 'AdminController@update')->name('admin/profile/update');
     // timeline
     Route::middleware('role:admin')->get('/admin/time-line', 'AdminController@time_line')->name('admin/time-line');
     // verifikasi
+    Route::middleware('role:admin')->get('/admin/verifikasi/', 'AuthController@verifikasi')->name('admin/verifikasi');
     Route::middleware('role:admin')->get('/admin/verifikasi/', 'AuthController@verifikasi')->name('admin/verifikasi');
     Route::middleware('role:admin')->get('/admin/detail-verifikasi/{id}', 'AuthController@detail_verif')->name('admin/detail-verifikasi');
     Route::middleware('role:admin')->delete('/admin/verifikasi/{id}', 'AuthController@tolak')->name('admin/verifikasi/tolak');
@@ -53,6 +57,8 @@ Route::namespace('Admin')->group(function() {
     //data pengaduan
     Route::middleware('role:admin')->get('/admin/pengaduan', 'AdminController@pengaduan')->name('admin/pengaduan');
     Route::middleware('role:admin')->get('/admin/detail-aduan/{id}', 'AdminController@detail_aduan')->name('admin/detail-aduan');
+    Route::middleware('role:admin')->get('/admin/cetak-aduan-pertanggal/{tglAwal}/{tglAkhir}', 'AdminController@cetak_aduan_pertanggal')->name('admin/cetak-aduan-pertanggal');
+    Route::middleware('role:admin')->get('/admin/cetak-aduan-lokasi/{lokasi}', 'AdminController@cetak_aduan_lokasi')->name('admin/cetak-aduan-lokasi');
     //user
     Route::middleware('role:admin')->get('/admin/data-user', 'AdminController@index')->name('admin/data-user');
     Route::middleware('role:admin')->get('/admin/detail-user/{id}', 'AdminController@detail')->name('admin/detail-user');
@@ -92,6 +98,7 @@ Route::namespace('Masyarakat')->group(function() {
     //Pengaduan
     Route::middleware('role:masyarakat')->get('/masyarakat/tulis-aduan', 'MasyarakatController@index')->name('tulis-aduan');
     Route::middleware('role:masyarakat')->post('/masyarakat/tulis-aduan/kirim', 'MasyarakatController@store')->name('tulis-aduan/kirim');
+    Route::middleware('role:masyarakat')->delete('/masyarakat/aduan/hapus/{id}', 'MasyarakatController@hapus_aduan')->name('aduan/hapus');
     Route::middleware('role:masyarakat')->get('/masyarakat/aduan/edit/{id}', 'MasyarakatController@edit')->name('aduan/edit');
     Route::middleware('role:masyarakat')->patch('/masyarakat/aduan/edit/{id}/kirim', 'MasyarakatController@edit_kirim')->name('aduan/edit/kirim');
     // Tanggapan
@@ -100,5 +107,5 @@ Route::namespace('Masyarakat')->group(function() {
     Route::middleware('role:masyarakat')->get('/masyarakat/time-line', 'MasyarakatController@time_line')->name('masyarakat/time-line');
     //Edit Profile
     Route::middleware('role:masyarakat')->get('/masyarakat/profile/', 'MasyarakatController@profile')->name('masyarakat/profile');
-    Route::middleware('role:masyarakat')->patch('/masyarakat/profile/{user}/kirim', 'MasyarakatController@update')->name('masyarakat/profile/kirim');
+    Route::middleware('role:masyarakat')->patch('/masyarakat/profile/kirim', 'MasyarakatController@update')->name('masyarakat/profile/kirim');
 });

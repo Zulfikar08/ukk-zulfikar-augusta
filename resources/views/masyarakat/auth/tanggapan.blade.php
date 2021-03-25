@@ -23,7 +23,7 @@
                         <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" src="{{ url('/'. $pengaduan->file) }}" alt="">
                     </div>
                     <p class="text-gray">
-                        <small>{{ $pengaduan->tgl_pengaduan }}</small>
+                        <small>{{ $pengaduan->tgl_pengaduan }} - {{ $pengaduan->lokasi }}</small>
                     </p>
                     @if($pengaduan->status == 'pending')
                     <p class="badge badge-warning mx-3">{{ $pengaduan->status }}</p>

@@ -32,6 +32,9 @@
                 <p>{{ $item->isi_laporan }}</p>
                 <a href="{{ route('petugas/tanggapan', $item->id) }}"> Tanggapi &rarr;</a>
             </div>
+            <div class="card-footer text-center">
+                <small> Dibuat pada : {{ $pengaduan->tgl_pengaduan }}</small>
+            </div>
         </div>
         @endif
     @endforeach
