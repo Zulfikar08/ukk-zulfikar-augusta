@@ -74,6 +74,9 @@ Route::namespace('Admin')->group(function() {
 Route::namespace('Petugas')->group(function() {
     //Dashboard
     Route::middleware('role:petugas')->get('/petugas/dashboard', 'DashboardController@index')->name('petugas/dashboard');
+    // profile
+    Route::middleware('role:petugas')->get('/petugas/profile', 'PetugasController@profile')->name('petugas/profile');
+    Route::middleware('role:petugas')->patch('/petugas/profile/update', 'PetugasController@update')->name('petugas/profile/update');
     //Timeline
     Route::middleware('role:petugas')->get('/petugas/time-line', 'PetugasController@time_line')->name('petugas/time-line');
     //Tanggapan

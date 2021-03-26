@@ -129,22 +129,15 @@ class MasyarakatController extends Controller
         ]);
     }
     
-    public function profile(User $user)
-    {
+    public function profile(){
         $menu = Auth::user()->roles->pluck('name');
         $user = Auth::user();
-        return view('masyarakat.auth.profile',[
+        return view('masyarakat.profile.index',[
             'menu' => $menu,
             'user' => $user,
         ]);
     }
 
-    /**
-     * Update user's profile
-     *
-     * @param  UpdateProfileRequest $request
-     * @return \Illuminate\Contracts\Support\Renderable
-     */
     public function update(UpdateProfileRequest $request) {
         $request->user()->update(
             $request->all()

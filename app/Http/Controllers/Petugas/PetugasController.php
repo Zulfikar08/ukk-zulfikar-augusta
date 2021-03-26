@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Petugas;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\UpdateProfileRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Pengaduan;
@@ -26,6 +27,24 @@ class PetugasController extends Controller
         ]);
     }
 
+    public function profile() 
+    {
+        $menu = Auth::user()->roles->pluck('name');
+        $user = Auth::user();
+        return view ('petugas.profile.index', [
+            'menu' => $menu,
+            'user' => $user
+        ]);
+    }
+
+    public function update(UpdateProfileRequest $request) 
+    {
+        $request->user()->update(
+            $request->all()
+        );
+        return redirect()->back()->with('status', 'Data berhasil diupdate');
+    }
+
     public function time_line() {
         $menu = Auth::user()->roles->pluck('name');
         $pengaduan = Pengaduan::orderBy('id', 'DESC')->paginate(50);
@@ -35,7 +54,7 @@ class PetugasController extends Controller
         ]);
     }
 
-    public function detail($id) 
+    public function detail($id)     
     {
     $menu = Auth::user()->roles->pluck('name');
     $pengaduan = Pengaduan::find($id);

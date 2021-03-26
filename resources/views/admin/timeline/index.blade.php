@@ -27,14 +27,11 @@
                         <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 70%; height:70%;"
                             src="{{ url('/'. $item->file) }}" alt="">
                     </div>
-                    <p class="text-gray">
-                        <small>{{ $item->tgl_pengaduan }}</small>
-                    </p>
                     <p>{{ $item->isi_laporan }}</p>
                     <a href="{{ route('admin/tanggapan', $item->id) }}"> Tanggapi &rarr;</a>
                 </div>
                 <div class="card-footer text-center">
-                    <small> Dibuat pada : {{ $pengaduan->tgl_pengaduan }}</small>
+                    <small> Dibuat pada : {{ $item->tgl_pengaduan }}</small>
                 </div>
             </div>
             @endif

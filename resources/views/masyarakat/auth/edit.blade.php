@@ -90,7 +90,7 @@
     <div class="col-lg-6">
         <div class="card shadow mb-4">
             <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-dark">{{ $pengaduan->users->name }} - {{ $pengaduan->judul_laporan }} <small class="float-right">{{ $pengaduan->tgl_pengaduan }}</small></h6>
+                <h6 class="m-0 font-weight-bold text-dark">{{ $pengaduan->users->name }} - {{ $pengaduan->judul_laporan }}</h6>
             </div>
             <div class="card-body">
                 <div class="text-center">
@@ -102,6 +102,9 @@
                 </p>
                 <p>{{ $pengaduan->isi_laporan }}</p>
                 <a href="{{ route('masyarakat/tanggapan', $pengaduan->id) }}"> Tanggapan &rarr;</a>
+            </div>
+            <div class="card-footer text-center">
+                <small> Dibuat pada : {{ $pengaduan->tgl_pengaduan }}</small>
             </div>
         </div>
     </div>

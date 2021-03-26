@@ -26,6 +26,7 @@
 					<th>no</th>
 					<th>pengadu</th>
 					<th>judul</th>
+					<th>Foto</th>
 					<th>Isi</th>
 					<th>lokasi</th>
 					<th>status</th>
@@ -35,6 +36,7 @@
 					<td>{{ $loop->iteration }}</td>
 					<td>{{ $item->users->name }}</td>
 					<td>{{ $item->judul_laporan }}</td>
+					<td><img style="width: 70%;" src="{{ url('/'. $item->file) }}" alt=""></td>
 					<td>{{ $item->isi_laporan }}</td>
 					<td>{{ $item->lokasi }}</td>
 					<td>{{ $item->status }}</td>
