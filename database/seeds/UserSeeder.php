@@ -46,5 +46,7 @@ class UserSeeder extends Seeder
         ]);
 
         $masyarakat->assignRole('masyarakat');
+
+        factory(App\User::class, 200)->create();
     }
 }

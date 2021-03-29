@@ -37,7 +37,7 @@
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="{{ route('admin/petugas') }}">
+            <a class="nav-link" href="{{ route('admin/user-nonaktif') }}">
                 <i class="ni ni-lock-circle-open text-warning"></i>
                 <span class="nav-link-text">User Nonaktif</span>
             </a>

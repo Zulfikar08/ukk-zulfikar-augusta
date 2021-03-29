@@ -23,7 +23,7 @@ class AdminController extends Controller
     //
     public function index() {
         $menu = Auth::user()->roles->pluck('name');
-        $users = User::orderBy('id', 'ASC')->paginate(10);
+        $users = User::all();
         $nonaktif = User::onlyTrashed()->orderBy('id', 'ASC')->paginate(10);
         return view ('admin.auth.index', [
             'menu' => $menu,
@@ -76,14 +76,14 @@ class AdminController extends Controller
 
     public function detail($id) 
     {
-    $menu = Auth::user()->roles->pluck('name');
-    $pengaduan = Pengaduan::find($id);
-    $user = User::find($id);
-    return view('admin.auth.detail', [
-        'menu' => $menu,
-        'user' => $user,
-        'pengaduan' => $pengaduan
-        ]);
+        $menu = Auth::user()->roles->pluck('name');
+        $pengaduan = Pengaduan::find($id);
+        $user = User::find($id);
+        return view('admin.auth.detail', [
+            'menu' => $menu,
+            'user' => $user,
+            'pengaduan' => $pengaduan
+            ]);
     }
         
     public function nonaktif($id)
@@ -174,22 +174,22 @@ class AdminController extends Controller
         return redirect()->back();
     }
 
-    public function petugas()
+    public function user_nonaktif()
     {
-        $menu = Auth::user()->roles->pluck('name');
-        $petugas = User::whereHas("roles", function($q)
-        { 
-            $q->where("name", "petugas"); 
-        })->paginate(50);
+        // $petugas = User::whereHas("roles", function($q)
+        // { 
+        //     $q->where("name", "petugas"); 
+        // })->paginate(50);
 
-        $admin = User::whereHas("roles", function($q)
-        { 
-            $q->where("name", "admin"); 
-        })->paginate(50);
+        // $admin = User::whereHas("roles", function($q)
+        // { 
+        //     $q->where("name", "admin"); 
+        // })->paginate(50);
         // $petugas = User::orderBy('id', 'ASC')->paginate(50);
-        return view('admin.auth.data-petugas', [
-            'petugas' => $petugas,
-            'admin' => $admin,
+        $menu = Auth::user()->roles->pluck('name');
+        $nonaktif = User::onlyTrashed()->get();
+        return view('admin.auth.user-nonaktif', [
+            'nonaktif' => $nonaktif,
             'menu' => $menu
         ]);
     }

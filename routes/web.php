@@ -51,20 +51,19 @@ Route::namespace('Admin')->group(function() {
     //tanggapan
     Route::middleware('role:admin')->get('/admin/tanggapan/{id}', 'AdminController@tanggapan')->name('admin/tanggapan');
     Route::middleware('role:admin')->post('/admin/tanggapan/kirim', 'AdminController@kirim_tanggapan')->name('admin/tanggapan/kirim');
-    //petugas management
-    Route::middleware('role:admin')->get('/admin/petugas', 'AdminController@petugas')->name('admin/petugas');
-    Route::middleware('role:admin')->post('/admin/petugas/tambah', 'AdminController@petugas_tambah')->name('admin/petugas/tambah');
     //data pengaduan
     Route::middleware('role:admin')->get('/admin/pengaduan', 'AdminController@pengaduan')->name('admin/pengaduan');
     Route::middleware('role:admin')->get('/admin/detail-aduan/{id}', 'AdminController@detail_aduan')->name('admin/detail-aduan');
     Route::middleware('role:admin')->get('/admin/cetak-aduan-pertanggal/{tglAwal}/{tglAkhir}', 'AdminController@cetak_aduan_pertanggal')->name('admin/cetak-aduan-pertanggal');
     Route::middleware('role:admin')->get('/admin/cetak-aduan-lokasi/{lokasi}', 'AdminController@cetak_aduan_lokasi')->name('admin/cetak-aduan-lokasi');
     Route::middleware('role:admin')->get('/admin/cetak-aduan-status/{status}', 'AdminController@cetak_aduan_status')->name('admin/cetak-aduan-status');
-    //user
+    //user manajemen
     Route::middleware('role:admin')->get('/admin/data-user', 'AdminController@index')->name('admin/data-user');
     Route::middleware('role:admin')->get('/admin/detail-user/{id}', 'AdminController@detail')->name('admin/detail-user');
     Route::middleware('role:admin')->delete('/admin/user/{id}/nonaktif', 'AdminController@nonaktif')->name('admin/nonaktif-user');
     Route::middleware('role:admin')->get('/admin/user/{id}/aktifkan', 'AdminController@aktifkan')->name('admin/aktifkan-user');
+    Route::middleware('role:admin')->get('/admin/user-nonaktif', 'AdminController@user_nonaktif')->name('admin/user-nonaktif');
+    Route::middleware('role:admin')->post('/admin/petugas/tambah', 'AdminController@petugas_tambah')->name('admin/petugas/tambah');
     Route::middleware('role:admin')->get('/admin/search/', 'AdminController@search')->name('admin/search');
     //excel export
     Route::middleware('role:admin')->get('/admin/user/export', 'AdminController@user_excel')->name('admin/user-export');
