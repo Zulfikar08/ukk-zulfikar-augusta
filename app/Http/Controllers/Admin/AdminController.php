@@ -52,13 +52,15 @@ class AdminController extends Controller
     {           
         $menu = Auth::user()->roles->pluck('name');
         $search = $request->search;
-        $users = User::where('name','like',"%".$search."%")->paginate(50);
+        $users = User::where('name','like',"%".$search."%", 'or','phone','like', "%".$search."%")->paginate(50);
         $nonaktif = User::onlyTrashed()->orderBy('id', 'ASC')->paginate(10);
-        return view('admin.auth.index', [
-            'users' => $users,
-            'menu' => $menu,
-            'nonaktif' => $nonaktif
-        ]);
+        return redirect()->action('Admin\AdminController@petugas');
+        // return view('admin.auth.index', [
+        //     'users' => $users,
+        //     'menu' => $menu,
+        //     'nonaktif' => $nonaktif
+        // ]);
+        
     }
 
     public function time_line() {
@@ -175,7 +177,6 @@ class AdminController extends Controller
     public function petugas()
     {
         $menu = Auth::user()->roles->pluck('name');
-
         $petugas = User::whereHas("roles", function($q)
         { 
             $q->where("name", "petugas"); 
@@ -214,6 +215,7 @@ class AdminController extends Controller
             'password.required' => 'Password harus diisi!',
             'password.min' => 'Password minimal 8 karakter!',
             'password.confirmed' => 'Password tidak sama!',
+            'role.required' => 'Role harus diisi!'
         ]);
         
         $user = User::create([
@@ -260,6 +262,16 @@ class AdminController extends Controller
         return view('admin.auth.report-pengaduan-lokasi', [
             'pengaduan' => $pengaduan,
             'lokasi' => $lokasi,
+        ]);
+    }
+
+    public function cetak_aduan_status($status) 
+    {
+        $pengaduan = Pengaduan::with('users')->where('status',[$status])->get();
+        $status = $status;
+        return view('admin.auth.report-pengaduan-status', [
+            'pengaduan' => $pengaduan,
+            'status' => $status,
         ]);
     }
     

@@ -2,107 +2,127 @@
 @section('title', 'Envelope | Pengaduan')
 
 @section('content')
-<div class="d-sm-flex align-items-center justify-content-between mb-4">
-    <h1 class="h3 mb-0 text-gray-800">Data User</h1>
-    <a href="{{ route('admin/user-export') }}" class="d-sm-inline-block btn btn-sm btn-primary shadow-sm">
-        <i class="fas fa-download fa-sm text-white-50"></i>Generate Report
-    </a>
-</div>
+<div class="header bg-gradient-info pb-6">
+    <div class="container-fluid">
+        <div class="header-body">
 
-@if (session('status'))
-<div class="alert alert-success alert-dismissible fade show" role="alert">
-    <strong>Berhasil!</strong> {{ session('status') }}
-    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-    </button>
-</div>
-@endif
-
-<div class="row">
-    <div class="col-lg-12">
-        <form method="post" action="{{ route('admin/search') }}" class="form-inline">
-            @csrf
-            <div class="form-group mr-2 mb-2">
-                <input type="text" class="form-control" name="search" id="search" placeholder="Search...">
+            <div class="row align-items-center py-4">
+                <div class="col-lg-6 col-7">
+                    <h6 class="h2 text-white d-inline-block mb-0">Data User</h6>
+                </div>
             </div>
-            <button type="submit" class="btn btn-primary mb-2">Cari</button>
-        </form>
-    </div>
-</div>
-<div class="row">
 
-    <div class="col-lg-6 mb-4">
-
-        <div class="card shadow mb-4">
-            <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-primary">Data User</h6>
-            </div>
-            <div class="card-body">
-                <div class="table-responsive">
-                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                        <thead>
-                            <tr>
-                                <th>#</th>
-                                <th>Nama</th>
-                                <th>Role</th>
-                                <th>Aksi</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach( $users as $item )
-                            <tr>
-                                <td>{{ $loop->iteration }}</td>
-                                <td>{{ $item->name }}</td>
-                                <td>{{ implode(', ', $item->roles()->get()->pluck('name')->toArray()) }}</td>
-                                <td>
-                                    <a class="badge badge-info"
-                                        href="{{ route('admin/detail-user', $item->id) }}">detail</a>
-                                </td>
-                            </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
-                    {{ $users->links() }}
+            <div class="row">
+                <div class="col-xl-6 mb-3 col-md-6">
+                    <form method="get" action="{{ route('admin/search') }}">
+                        @csrf
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="Cari" id="search" name="search">
+                            <div class="input-group-append">
+                                <button class="btn btn-info" type="submit" id="button-addon2">Cari</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-xs-6 col-md-6 text-right">
+                    <a href="{{ route('admin/user-export') }}" class="btn btn-sm btn-neutral">
+                        Buat Laporan
+                    </a>
                 </div>
             </div>
         </div>
     </div>
+</div>
 
-    <div class="col-lg-6 mb-4">
-        <div class="card shadow mb-4">
-            <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-primary">Data User Nonaktif</h6>
-            </div>
-            <div class="card-body">
-                <div class="table-responsive">
-                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                        <thead>
-                            <tr>
-                                <th>#</th>
-                                <th>Nama</th>
-                                <th>Role</th>
-                                <th>Aksi</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach( $nonaktif as $item )
-                            <tr>
-                                <td>{{ $loop->iteration }}</td>
-                                <td>{{ $item->name }}</td>
-                                <td>{{ implode(', ', $item->roles()->get()->pluck('name')->toArray()) }}</td>
-                                <td>
-                                    <a class="badge badge-success"
-                                        href="{{ route('admin/aktifkan-user', $item->id) }}">aktifkan</a>
-                                </td>
-                            </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
-                    {{ $nonaktif->links() }}
+<div class="container-fluid mt--6">
+    <div class="row">
+        <div class="col-xl-6">
+            <div class="card shadow mb-4">
+                <div class="card-header bg-transparent">
+                    <div class="row align-items-center">
+                        <div class="col">
+                            <h5 class="h3 mb-0 text-info">Data Masyarakat</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    @if (session('status'))
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        <strong>Berhasil!</strong> {{ session('status') }}
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    @endif
+                    <div class="table-responsive">
+                        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Nama</th>
+                                    <th>Role</th>
+                                    <th>Aksi</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach( $users as $item )
+                                <tr>
+                                    <td>{{ $loop->iteration }}</td>
+                                    <td>{{ $item->name }}</td>
+                                    <td>{{ implode(', ', $item->roles()->get()->pluck('name')->toArray()) }}</td>
+                                    <td>
+                                        <a class="badge badge-info"
+                                            href="{{ route('admin/detail-user', $item->id) }}">detail</a>
+                                    </td>
+                                </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                        {{ $users->links() }}
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
 
-</div>
-@endsection
+        <div class="col-xl-6">
+            <div class="card shadow mb-4">
+                <div class="card-header bg-transparent">
+                    <div class="row align-items-center">
+                        <div class="col">
+                            <h5 class="h3 mb-0 text-warning">Data User Nonaktif</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Nama</th>
+                                    <th>Role</th>
+                                    <th>Aksi</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach( $nonaktif as $item )
+                                <tr>
+                                    <td>{{ $loop->iteration }}</td>
+                                    <td>{{ $item->name }}</td>
+                                    <td>{{ implode(', ', $item->roles()->get()->pluck('name')->toArray()) }}</td>
+                                    <td>
+                                        <a class="badge badge-success"
+                                            href="{{ route('admin/aktifkan-user', $item->id) }}">aktifkan</a>
+                                    </td>
+                                </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                        {{ $nonaktif->links() }}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    @endsection

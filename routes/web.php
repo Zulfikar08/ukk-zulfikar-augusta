@@ -59,12 +59,13 @@ Route::namespace('Admin')->group(function() {
     Route::middleware('role:admin')->get('/admin/detail-aduan/{id}', 'AdminController@detail_aduan')->name('admin/detail-aduan');
     Route::middleware('role:admin')->get('/admin/cetak-aduan-pertanggal/{tglAwal}/{tglAkhir}', 'AdminController@cetak_aduan_pertanggal')->name('admin/cetak-aduan-pertanggal');
     Route::middleware('role:admin')->get('/admin/cetak-aduan-lokasi/{lokasi}', 'AdminController@cetak_aduan_lokasi')->name('admin/cetak-aduan-lokasi');
+    Route::middleware('role:admin')->get('/admin/cetak-aduan-status/{status}', 'AdminController@cetak_aduan_status')->name('admin/cetak-aduan-status');
     //user
     Route::middleware('role:admin')->get('/admin/data-user', 'AdminController@index')->name('admin/data-user');
     Route::middleware('role:admin')->get('/admin/detail-user/{id}', 'AdminController@detail')->name('admin/detail-user');
     Route::middleware('role:admin')->delete('/admin/user/{id}/nonaktif', 'AdminController@nonaktif')->name('admin/nonaktif-user');
     Route::middleware('role:admin')->get('/admin/user/{id}/aktifkan', 'AdminController@aktifkan')->name('admin/aktifkan-user');
-    Route::middleware('role:admin')->post('/admin/search', 'AdminController@search')->name('admin/search');
+    Route::middleware('role:admin')->get('/admin/search/', 'AdminController@search')->name('admin/search');
     //excel export
     Route::middleware('role:admin')->get('/admin/user/export', 'AdminController@user_excel')->name('admin/user-export');
     Route::middleware('role:admin')->get('/admin/pengaduan/export', 'AdminController@pengaduan_excel')->name('admin/pengaduan-export');

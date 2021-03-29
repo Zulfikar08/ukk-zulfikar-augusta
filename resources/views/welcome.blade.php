@@ -44,7 +44,7 @@
                     <!-- Card -->
                     <div class="card">
                         <div class="card-body">
-                            <h4 class="card-title">Tanggapan</h4>
+                            <h4 class="card-title">Visibilitas</h4>
                             <p>Anda bisa melihat semua data aduan dari tiap-tiap masyarakat dan dapat melihat
                                 balasan apa saja yang dilakukan petugas pada suatu aduan.</p>
                         </div>
@@ -75,8 +75,7 @@
                 <div class="col-lg-6">
                     <div class="text-container">
                         <h2>Tulis dan Tanggapi Aduan Dimanapun!</h2>
-                        <p>Sudah sudah ada sekitar 12321 aduan dan tanggapan yang terdata di Envelope dan ada sekitar 
-                            3211 dengan status selesai di tangani! Ayo gabung dan ikut berpartisipasi di Envelope</p>
+                        <p>Sudah sudah ada sekitar {{ $pengaduan }} aduan dan tanggapan yang terdata di Envelope Ayo gabung dan ikut berpartisipasi di Envelope</p>
                     </div> <!-- end of text-container -->
                 </div> <!-- end of col -->
                 <div class="col-lg-6">
@@ -251,9 +250,6 @@
                                 <span class="value">{{ $masyarakat }}</span>
                             </div>
                             <hr class="cell-divide-hr">
-                            <div class="button-wrapper">
-                                <a class="btn-solid-reg page-scroll" href="#request">Gabung</a>
-                            </div>
                         </div>
                     </div> <!-- end of card -->
                     <!-- end of card -->
@@ -268,9 +264,6 @@
                                 <span class="value">{{ $pengaduan }}</span>
                             </div>
                             <hr class="cell-divide-hr">
-                            <div class="button-wrapper">
-                                <a class="btn-solid-reg page-scroll" href="#request">Tulis aduan</a>
-                            </div>
                         </div>
                     </div> <!-- end of card -->
                     <!-- end of card -->
@@ -285,9 +278,6 @@
                                 <span class="value">{{ $admin }}</span>
                             </div>
                             <hr class="cell-divide-hr">
-                            <div class="button-wrapper">
-                                <a class="btn-solid-reg page-scroll" href="#request">Hubungi</a>
-                            </div>
                         </div>
                     </div> <!-- end of card -->
                     <!-- end of card -->
@@ -326,36 +316,6 @@
                                         </div>
                                     </div>
                                 </div> <!-- end of swiper-slide -->
-                                <!-- end of slide -->
-
-                                <!-- Slide -->
-                                <div class="swiper-slide">
-                                    <div class="card">
-                                        <img class="card-image" src="web/images/testimonial-2.svg" alt="alternative">
-                                        <div class="card-body">
-                                            <p class="testimonial-text">Evolo has always helped or startup to position
-                                                itself in the highly competitive market of mobile applications. You will
-                                                not regret using it!</p>
-                                            <p class="testimonial-author">Marsha Singer - Developer</p>
-                                        </div>
-                                    </div>
-                                </div> <!-- end of swiper-slide -->
-                                <!-- end of slide -->
-
-                                <!-- Slide -->
-                                <div class="swiper-slide">
-                                    <div class="card">
-                                        <img class="card-image" src="web/images/testimonial-1.svg" alt="alternative">
-                                        <div class="card-body">
-                                            <p class="testimonial-text">Love their services and was so amazed with the
-                                                support and results that I purchased Evolo for two years in a row. They
-                                                are awesome.</p>
-                                            <p class="testimonial-author">Roy Smith - Marketer</p>
-                                        </div>
-                                    </div>
-                                </div> <!-- end of swiper-slide -->
-                                <!-- end of slide -->
-
                             </div> <!-- end of swiper-wrapper -->
 
                             <!-- Add Arrows -->

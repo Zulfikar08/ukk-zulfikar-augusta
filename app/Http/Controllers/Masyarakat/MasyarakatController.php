@@ -79,26 +79,38 @@ class MasyarakatController extends Controller
         $request->validate([
             'judul_laporan' => 'required|max:64',
             'isi_laporan' => 'required',
-            'file' => 'required|image|mimes:jpeg,jpg,png|max:4000',
+            'file' => 'image|mimes:jpeg,jpg,png|max:4000',
             'nik' => 'required',
             'status' => 'required',
         ]);
-
-        $files = $request->file;
-        $namaGambar = date('YmdHis') . "." . $files->getClientOriginalExtension();
-        $lokasiGambar = 'uploads/'; // upload path
-        $files->move($lokasiGambar, $namaGambar);
         
-        Pengaduan::find($id)->update([
-            'user_id' => Auth::id(),
-            'tgl_pengaduan' => Carbon::now(),
-            'nik' => $request->nik,
-            'judul_laporan' => $request->judul_laporan,
-            'isi_laporan' => $request->isi_laporan,
-            'file' =>  'uploads/'.$namaGambar, 
-            'status' => $request->status,
-            ]);
-        return redirect()->back()->with('status', 'Update berhasil');
+        if ($request->file) {
+            $files = $request->file;
+            $namaGambar = date('YmdHis') . "." . $files->getClientOriginalExtension();
+            $lokasiGambar = 'uploads/'; // upload path
+            $files->move($lokasiGambar, $namaGambar);
+            
+            Pengaduan::find($id)->update([
+                'user_id' => Auth::id(),
+                'tgl_pengaduan' => Carbon::now(),
+                'nik' => $request->nik,
+                'judul_laporan' => $request->judul_laporan,
+                'isi_laporan' => $request->isi_laporan,
+                'file' =>  'uploads/'.$namaGambar, 
+                'status' => $request->status,
+                ]);
+            return redirect()->back()->with('status', 'Update berhasil');
+        } else {
+            Pengaduan::find($id)->update([
+                'user_id' => Auth::id(),
+                'tgl_pengaduan' => Carbon::now(),
+                'nik' => $request->nik,
+                'judul_laporan' => $request->judul_laporan,
+                'isi_laporan' => $request->isi_laporan,
+                'status' => $request->status,
+                ]);
+            return redirect()->back()->with('status', 'Update berhasil');
+        }
     }
 
     public function time_line()

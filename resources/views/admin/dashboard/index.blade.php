@@ -2,129 +2,151 @@
 @section('title', 'Envelope | Dashboard')
 
 @section('content')
-<div class="d-sm-flex align-items-center justify-content-between mb-4">
-    <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
-</div>
-
-<!-- Content Row -->
-<div class="row">
-
-    <div class="col-xl-3 col-md-6 mb-4">
-        <div class="card border-left-primary shadow h-100 py-2">
-            <div class="card-body">
-                <div class="row no-gutters align-items-center">
-                    <div class="col mr-2">
-                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                            Total Laporan</div>
-                        <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $jumlah_aduan }} Laporan</div>
-                    </div>
-                    <div class="col-auto">
-                        <i class="fas fa-comments fa-2x text-gray-300"></i>
-                    </div>
+<div class="header bg-gradient-info pb-6">
+    <div class="container-fluid">
+        <div class="header-body">
+            <div class="row align-items-center py-4">
+                <div class="col-lg-6 col-7">
+                    <h6 class="h2 text-white d-inline-block mb-0">Dashboard</h6>
                 </div>
             </div>
-        </div>
-    </div>
-    <!-- Earnings (Monthly) Card Example -->
-    <div class="col-xl-3 col-md-6 mb-4">
-        <div class="card border-left-warning shadow h-100 py-2">
-            <div class="card-body">
-                <div class="row no-gutters align-items-center">
-                    <div class="col mr-2">
-                        <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
-                            Pending Verifikasi</div>
-                        <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $jumlah_pending }}</div>
-                    </div>
-                    <div class="col-auto">
-                        <i class="fas fa-clock fa-2x text-gray-300"></i>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+            <!-- CARD STATUS -->
 
-    <!-- Earnings (Monthly) Card Example -->
-    <div class="col-xl-3 col-md-6 mb-4">
-        <div class="card border-left-success shadow h-100 py-2">
-            <div class="card-body">
-                <div class="row no-gutters align-items-center">
-                    <div class="col mr-2">
-                        <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                            Laporan Selesai</div>
-                        <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $jumlah_selesai }} Laporan</div>
-                    </div>
-                    <div class="col-auto">
-                        <i class="fas fa-check fa-2x text-gray-300"></i>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Earnings (Monthly) Card Example -->
-    <div class="col-xl-3 col-md-6 mb-4">
-        <div class="card border-left-info shadow h-100 py-2">
-            <div class="card-body">
-                <div class="row no-gutters align-items-center">
-                    <div class="col mr-2">
-                        <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Sedang diproses 
-                        </div>
-                        <div class="row no-gutters align-items-center">
-                            <div class="col-auto">
-                                <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">{{ $jumlah_diproses }} laporan</div>
+            <div class="row">
+                <div class="col-xl-3 col-md-6">
+                    <div class="card card-stats">
+                        <!-- Card body -->
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col">
+                                    <h5 class="card-title text-uppercase text-muted mb-0">Pengaduan</h5>
+                                    <span class="h2 font-weight-bold mb-0">{{ $jumlah_aduan }}</span>
+                                </div>
+                                <div class="col-auto">
+                                    <div class="icon icon-shape bg-gradient-red text-white rounded-circle shadow">
+                                        <i class="ni ni-active-40"></i>
+                                    </div>
+                                </div>
                             </div>
+                            <p class="mt-3 mb-0 text-sm">
+                                <span class="text-success mr-2"><i class="fa fa-plus-square"></i> 10</span>
+                                <span class="text-nowrap">Sebulan terakhir</span>
+                            </p>
                         </div>
                     </div>
-                    <div class="col-auto">
-                        <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
+                </div>
+                <div class="col-xl-3 col-md-6">
+                    <div class="card card-stats">
+                        <!-- Card body -->
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col">
+                                    <h5 class="card-title text-uppercase text-muted mb-0">Pending</h5>
+                                    <span class="h2 font-weight-bold mb-0">{{ $jumlah_pending }}</span>
+                                </div>
+                                <div class="col-auto">
+                                    <div class="icon icon-shape bg-gradient-orange text-white rounded-circle shadow">
+                                        <i class="ni ni-chart-pie-35"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="mt-3 mb-0 text-sm">
+                                <span class="text-success mr-2"><i class="fa fa-plus-square"></i> 21</span>
+                                <span class="text-nowrap">Sebulan terakhir</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-md-6">
+                    <div class="card card-stats">
+                        <!-- Card body -->
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col">
+                                    <h5 class="card-title text-uppercase text-muted mb-0">Selesai</h5>
+                                    <span class="h2 font-weight-bold mb-0">{{ $jumlah_selesai }}</span>
+                                </div>
+                                <div class="col-auto">
+                                    <div class="icon icon-shape bg-gradient-green text-white rounded-circle shadow">
+                                        <i class="ni ni-check-bold"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="mt-3 mb-0 text-sm">
+                                <span class="text-success mr-2"><i class="fa fa-arrow-up"></i> 3</span>
+                                <span class="text-nowrap">Sebulan terakhir</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-md-6">
+                    <div class="card card-stats">
+                        <!-- Card body -->
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col">
+                                    <h5 class="card-title text-uppercase text-muted mb-0">Diproses</h5>
+                                    <span class="h2 font-weight-bold mb-0">{{ $jumlah_diproses }}</span>
+                                </div>
+                                <div class="col-auto">
+                                    <div class="icon icon-shape bg-gradient-info text-white rounded-circle shadow">
+                                        <i class="ni ni-chart-bar-32"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="mt-3 mb-0 text-sm">
+                                <span class="text-success mr-2"><i class="fa fa-arrow-up"></i> 3.48%</span>
+                                <span class="text-nowrap">Sebulan terakhir</span>
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>
+            <!-- CARD STATUS END -->
         </div>
     </div>
-
-    <!-- Pending Requests Card Example -->
 </div>
-
-<!-- Content Row -->
-<div class="row">
-
-    <div class="col-lg-6 mb-4">
-
-        <!-- Illustrations -->
-        <div class="card shadow mb-4">
-            <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-primary">Welcome to ENVELOPE</h6>
-            </div>
-            <div class="card-body">
-                <div class="text-center">
-                    <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 25rem;"
-                        src="{{ url('sb_admin/img/undraw_posting_photo.svg') }}" alt="">
+<!-- Page content -->
+<div class="container-fluid mt--6">
+    <div class="row">
+        <div class="col-xl-6">
+            <div class="card">
+                <div class="card-header bg-transparent">
+                    <div class="row align-items-center">
+                        <div class="col">
+                            <h5 class="h3 mb-0 text-info">Welcome</h5>
+                        </div>
+                    </div>
                 </div>
-                <p>Selamat datang di Envelope! Envelope adalah aplikasi penyampaian pengaduan masyarkat
-                berbasis digital</p>
+                <div class="card-body">
+                    <p class="card-text">Selamat datang di Envelope! Envelope adalah aplikasi penyampaian pengaduan
+                        masyarkat berbasis digital. Anda adalah admin, verifikasi ada ditangan anda!</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-6">
+            <div class="card">
+                <div class="card-header bg-transparent">
+                    <div class="row align-items-center">
+                        <div class="col">
+                            <h5 class="h3 mb-0 text-info">Peraturan</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <p>Ada beberapa peraturan di envelope, diantaranya :</p>
+                    <div class="card" style="width: 100%;">
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">Dilarang menulis aduan palsu</li>
+                            <li class="list-group-item">Dilarangan menggunakan kalimat/kata kasar</li>
+                            <li class="list-group-item">Dilarang membuat aduan yang bersifat sarkas kepada pihak atau
+                                golongan manapun</li>
+                        </ul>
+                    </div>
+                    <p>Bagi yang melanggar akan dikenakan sanksi, seperti akun dinonaktifkan atau diban secara permanent
+                        dari Envelope</p>
+                </div>
             </div>
         </div>
     </div>
-
-    <div class="col-lg-6">
-        <div class="card shadow mb-4">
-            <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-primary">Peraturan</h6>
-            </div>
-            <div class="card-body">
-                <p> <strong>Ada beberapa peraturan di envelope, diantaranya :</strong> </p>
-                <ul class="list-group">
-                    <li class="list-group-item">Dilarang menulis aduan palsu</li>
-                    <li class="list-group-item">Dilarangan menggunakan kalimat/kata kasar</li>
-                    <li class="list-group-item">Dilarang membuat aduan yang bersifat sarkas kepada pihak atau golongan manapun</li>
-                </ul>
-                <p class="m-2">Bagi yang melanggar akan dikenakan sanksi, seperti akun dinonaktifkan atau diban secara permanent
-                dari Envelope</p>
-            </div>
-        </div>
-    </div>
-        <!-- Approach -->
-
-</div>
-@endsection
+    @endsection
