@@ -20,26 +20,26 @@
         </li>
         <li class="nav-item">
             <a class="nav-link" href="{{ route('admin/verifikasi') }}">
-                <i class="ni ni-time-alarm text-orange"></i>
+                <i class="ni ni-time-alarm text-yellow"></i>
                 <span class="nav-link-text">Pending</span>
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="{{ route('admin/petugas') }}">
-                <i class="ni ni-badge text-yellow"></i>
-                <span class="nav-link-text">Petugas</span>
-            </a>
-        </li>
-        <li class="nav-item">
             <a class="nav-link" href="{{ route('admin/pengaduan') }}">
-                <i class="ni ni-bullet-list-67 text-success"></i>
-                <span class="nav-link-text">Data Pengaduan</span>
-            </a>
+            <i class="ni ni-bullet-list-67 text-success"></i>
+            <span class="nav-link-text">Data Pengaduan</span>
+        </a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="{{ route('admin/data-user') }}">
                 <i class="ni ni-single-02 text-info"></i>
-                <span class="nav-link-text">Data Masyarakat</span>
+                <span class="nav-link-text">Data User</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{{ route('admin/petugas') }}">
+                <i class="ni ni-lock-circle-open text-warning"></i>
+                <span class="nav-link-text">User Nonaktif</span>
             </a>
         </li>
         <li class="nav-item">

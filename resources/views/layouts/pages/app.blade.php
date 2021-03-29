@@ -17,6 +17,9 @@
   <!-- Page plugins -->
   <!-- Argon CSS -->
   <link rel="stylesheet" href="{{ url('argon/assets/css/argon.css?v=1.2.0') }}" type="text/css">
+  <!-- Datatable -->
+  <link rel="stylesheet" type="text/css" href="{{ url('datatable/css/dataTables.bootstrap4.min.css') }}">
+
 </head>
 
 <body>
@@ -131,6 +134,14 @@
   <script src="{{ url('argon/assets/vendor/chart.js/dist/Chart.extension.js') }}"></script>
   <!-- Argon JS -->
   <script src="{{ url('argon/assets/js/argon.js?v=1.2.0') }}"></script>
+  <script type="text/javascript" language="javascript" src="{{ url('datatable/js/jquery-3.3.1.js') }} "></script>
+	<script type="text/javascript" language="javascript" src="{{ url('datatable/js/jquery.dataTables.min.js') }} "></script>
+	<script type="text/javascript" language="javascript" src="{{ url('datatable/js/dataTables.bootstrap4.min.js') }} "></script>
+  <script type="text/javascript">
+    $(document).ready( function () {
+        $('#dataTable').DataTable();
+    } );
+  </script>
 </body>
 
 </html>

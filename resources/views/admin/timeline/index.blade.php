@@ -14,7 +14,7 @@
             <!-- CARD STATUS -->
 
             <div class="row">
-                <div class="col-xl-6 col-md-6">
+                <div class="col-xl-8 col-md-6">
                     <div class="card card-stats">
                         <!-- Card body -->
                         <div class="card-body">
@@ -26,26 +26,6 @@
                                     <div class="icon icon-shape bg-gradient-green text-white rounded-circle shadow">
                                         <i class="ni ni-check-bold"></i>
                                     </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-6 col-md-6">
-                    <div class="card card-stats">
-                        <!-- Card body -->
-                        <div class="card-body">
-                            <div class="row">
-                                <div class="col">
-                                    <h5 class="card-title text-uppercase text-muted mb-0">Tulis!</h5>
-                                    <span class="h3 text-gray mb-0">Tulis aduan sekarang!</span>
-                                </div>
-                                <div class="col-auto">
-                                    <a href="">
-                                        <div class="icon icon-shape bg-gradient-info text-white rounded-circle shadow">
-                                            <i class="ni ni-active-40"></i>
-                                        </div>
-                                    </a>
                                 </div>
                             </div>
                         </div>
