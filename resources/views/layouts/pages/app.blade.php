@@ -8,7 +8,7 @@
   <meta name="author" content="Creative Tim">
   <title>@yield('title')</title>
   <!-- Favicon -->
-  <link rel="icon" href="{{ url('argon/assets/img/brand/favicon.png') }}" type="image/png">
+  <link rel="icon" href="{{ url('icon/envelope-icon.png') }}" type="image/png">
   <!-- Fonts -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700">
   <!-- Icons -->
@@ -29,7 +29,7 @@
       <!-- Brand -->
       <div class="sidenav-header  align-items-center">
         <a class="navbar-brand" href="javascript:void(0)">
-          <img src="{{ url('argon/assets/img/brand/blue.png') }}" class="navbar-brand-img" alt="...">
+          <img src="{{ url('icon/envelope.png') }}" class="navbar-brand-img" alt="...">
         </a>
       </div>
       <div class="navbar-inner">

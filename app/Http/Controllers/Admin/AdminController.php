@@ -48,21 +48,6 @@ class AdminController extends Controller
         return redirect()->back()->with('status', 'Data berhasil diupdate');
     }
 
-    public function search(Request $request)
-    {           
-        $menu = Auth::user()->roles->pluck('name');
-        $search = $request->search;
-        $users = User::where('name','like',"%".$search."%", 'or','phone','like', "%".$search."%")->paginate(50);
-        $nonaktif = User::onlyTrashed()->orderBy('id', 'ASC')->paginate(10);
-        return redirect()->action('Admin\AdminController@petugas');
-        // return view('admin.auth.index', [
-        //     'users' => $users,
-        //     'menu' => $menu,
-        //     'nonaktif' => $nonaktif
-        // ]);
-        
-    }
-
     public function time_line() {
         $menu = Auth::user()->roles->pluck('name');
         $pengaduan = Pengaduan::orderBy('id', 'ASC')->paginate(50);
