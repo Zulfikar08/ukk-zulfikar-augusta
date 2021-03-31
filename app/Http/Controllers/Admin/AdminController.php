@@ -10,6 +10,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Spatie\Permission\Models\Role;
+use PDF;
 use App\Http\Requests\UpdateProfileRequest;
 use App\User;
 use App\Pengaduan;
@@ -82,6 +83,14 @@ class AdminController extends Controller
         $user = User::onlyTrashed()->where('id',$id);
         $user->restore();
         return redirect()->back()->with('status', 'User berhasil diaktifkan!');
+    }
+
+    public function cetak_pdf()
+    {
+    	$pegawai = User::all();
+ 
+    	$pdf = PDF::loadview('pegawai_pdf',['pegawai'=>$pegawai]);
+    	return $pdf->download('laporan-pegawai-pdf');
     }
     
     public function user_excel() 

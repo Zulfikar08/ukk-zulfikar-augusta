@@ -65,19 +65,7 @@ class PetugasController extends Controller
         'pengaduan' => $pengaduan
         ]);
     }
-    public function nonaktif($id)
-    {
-        User::destroy($id);
-        return redirect('petugas/data-user')->with('status', 'User berhasil dinonaktifkan!');
-    }
-    public function aktifkan($id)
-    {
-        // 
-        $user = User::onlyTrashed()->where('id',$id);
-        $user->restore();
-        return redirect()->back()->with('status', 'User berhasil diaktifkan!');
-    }
-
+    
     public function tanggapan($id) {
         $menu = Auth::user()->roles->pluck('name');
         $pengaduan = Pengaduan::find($id);

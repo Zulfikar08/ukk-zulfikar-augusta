@@ -4,18 +4,17 @@
 
 @section('content')
 <div class="row">
+    <div class="col-lg-12">
     @if (session('status'))
-    <div class="alert alert-success" role="alert">
+    <div class="alert alert-success text-center" role="alert">
         {{ session('status') }}
     </div>
     @endif
-    <div class="col-lg-6 d-none d-lg-block bg-password-image"></div>
-    <div class="col-lg-6">
         <div class="p-5">
             <div class="text-center">
-                <h1 class="h4 text-gray-900 mb-2">Forgot Your Password?</h1>
-                <p class="mb-4">We get it, stuff happens. Just enter your email address below
-                    and we'll send you a link to reset your password!</p>
+                <h1 class="h4 text-gray-900 mb-2">Lupa Password Anda?</h1>
+                <p class="mb-4">Kami mengerti, banyak hal terjadi. Cukup masukkan alamat email Anda di bawah ini
+                    dan kami akan mengirimkan tautan untuk mengatur ulang kata sandi Anda!</p>
             </div>
             <form class="user" method="POST" action="{{ route('password.email') }}">
                 @csrf
@@ -34,11 +33,23 @@
             </form>
             <hr>
             <div class="text-center">
-                <a class="small" href="register.html">Create an Account!</a>
+                <a class="small" href="{{ route('register') }}">Daftar Envelope!</a>
             </div>
             <div class="text-center">
-                <a class="small" href="login.html">Already have an account? Login!</a>
+                <a class="small" href="{{ route('login') }}">Login!</a>
             </div>
+        </div>
+    </div>
+</div>
+
+<div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <p class="p-small">Copyright @ <?= date('Y') ?> <a
+                        href="https://github.com/Zulfikar08/ukk-zulfikar-augusta">Envelope</a> - All rights
+                    reserved</p>
+            </div> 
         </div>
     </div>
 </div>

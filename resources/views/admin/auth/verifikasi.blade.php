@@ -10,20 +10,6 @@
                     <h6 class="h2 text-white d-inline-block mb-0">Verikasi</h6>
                 </div>
             </div>
-            
-            <div class="row">
-                <div class="col-xl-6 col-md-6 mb-3">
-                    <form action="">
-                        <div class="input-group">
-                            <input type="text" class="form-control" placeholder="Cari" aria-label="Recipient's username"
-                                aria-describedby="button-addon2">
-                            <div class="input-group-append">
-                                <button class="btn btn-info" type="submit" id="button-addon2">Cari</button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
         </div>
     </div>
 </div>
@@ -50,7 +36,7 @@
                     </div>
                     @endif
                     <div class="table-responsive">
-                        <table class="table align-items-center">
+                        <table class="table align-items-center" id="dataTable">
                             <thead class="thead-light">
                                 <tr>
                                     <th scope="col" class="sort" data-sort="number">#</th>

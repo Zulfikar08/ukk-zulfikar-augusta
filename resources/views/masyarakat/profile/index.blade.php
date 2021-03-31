@@ -15,29 +15,28 @@
     </div>
 </div>
 
+@if (session('status'))
+<div class="alert alert-success alert-dismissible fade show" role="alert">
+    <strong>Berhasil!</strong> {{ session('status') }}
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+@endif
+
+
 <div class="container-fluid mt--6">
     <div class="row">
         <div class="col-xl-4 order-xl-2">
             <div class="card card-profile">
-                <img src=" {{ url('argon/assets/img/theme/img-1-1000x600.jpg') }} " alt="Image placeholder"
-                    class="card-img-top">
-                <div class="row justify-content-center">
-                    <div class="col-lg-3 order-lg-2">
-                        <div class="card-profile-image">
-                            <img src=" {{ url('argon/assets/img/theme/team-4.jpg') }} " class="rounded-circle">
-                        </div>
-                    </div>
-                </div>
-                <div class="card-header text-center border-0 pt-8 pt-md-4 pb-0 pb-md-4">
-                </div>
+                <img src=" {{ url('icon/foto-sampul.png') }} " alt="Image placeholder" class="card-img-top">
                 <div class="card-body pt-0">
                     <div class="row">
                         <div class="col">
                             <div class="card-profile-stats d-flex justify-content-center">
                                 <div>
                                     <span class="heading">{{ $user->name }}</span>
-                                    <span
-                                        class="description">{{ implode(', ', $user->roles()->get()->pluck('name')->toArray()) }}</span>
+                                    <span class="description">{{ implode(', ', $user->roles()->get()->pluck('name')->toArray()) }}</span>
                                 </div>
                             </div>
                         </div>
@@ -63,14 +62,6 @@
                     </div>
                 </div>
                 <div class="card-body">
-                    @if (session('status'))
-                    <div class="alert alert-success alert-dismissible fade show" role="alert">
-                        <strong>Berhasil!</strong> {{ session('status') }}
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    @endif
                     <form method="post" action="{{ route('masyarakat/profile/kirim') }}">
                         @method('patch')
                         @csrf
@@ -79,8 +70,7 @@
                                 <div class="col-lg-6">
                                     <div class="form-group">
                                         <label class="form-control-label" for="name">Nama</label>
-                                        <input type="text" name="name" id="name"
-                                            class="form-control @error('name') is-invalid @enderror"
+                                        <input type="text" name="name" id="name" class="form-control @error('name') is-invalid @enderror"
                                             placeholder="Nama Lengkap" value="{{ $user->name }}">
                                         @error('name')
                                         <span class="invalid-feedback" role="alert">
@@ -92,8 +82,7 @@
                                 <div class="col-lg-6">
                                     <div class="form-group">
                                         <label class="form-control-label" for="email">Email</label>
-                                        <input type="email" name="email" id="email"
-                                            class="form-control @error('email') is-invalid @enderror"
+                                        <input type="email" name="email" id="email" class="form-control @error('email') is-invalid @enderror"
                                             placeholder="email@contoh.com" value="{{ $user->email }}">
                                         @error('email')
                                         <span class="invalid-feedback" role="alert">
@@ -107,8 +96,7 @@
                                 <div class="col-lg-6">
                                     <div class="form-group">
                                         <label class="form-control-label" for="nik">NIK</label>
-                                        <input type="text" name="nik" id="nik"
-                                            class="form-control @error('nik') is-invalid @enderror" readonly
+                                        <input type="text" name="nik" id="nik" class="form-control @error('nik') is-invalid @enderror" readonly
                                             value="{{ $user->nik }}">
                                         @error('nik')
                                         <span class="invalid-feedback" role="alert">
@@ -120,8 +108,7 @@
                                 <div class="col-lg-6">
                                     <div class="form-group">
                                         <label class="form-control-label" for="phone">No.Telp</label>
-                                        <input type="number" id="phone" name="phone"
-                                            class="form-control @error('phone') is-invalid @enderror" placeholder=""
+                                        <input type="number" id="phone" name="phone" class="form-control @error('phone') is-invalid @enderror" placeholder=""
                                             value="{{ $user->phone }}">
                                         @error('phone')
                                         <span class="invalid-feedback" role="alert">

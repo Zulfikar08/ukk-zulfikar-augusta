@@ -10,6 +10,8 @@
     <meta name="author" content="">
 
     <title>@yield('title')</title>
+    <link rel="icon" href="{{ url('icon/envelope-icon.png') }}" type="image/png">    
+
 
     <!-- Evelo Template -->
     <link href="{{ url('web/css/bootstrap.css') }}" rel="stylesheet">
