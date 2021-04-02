@@ -22,6 +22,7 @@
 		<p class="header"><strong>Laporan Data Aduan</strong></p>
 		<p class="header">Berikut report aduan yang berlokasi di <strong> Desa {{ $lokasi }} </strong></p>
 		<table class="static" rules="all">
+			<thead>
 				<tr>
 					<th>no</th>
 					<th>pengadu</th>
@@ -31,6 +32,8 @@
 					<th>lokasi</th>
 					<th>status</th>
 				</tr>
+			</thead>
+			<tbody>
 				@foreach($pengaduan as $item)
 				<tr>
 					<td>{{ $loop->iteration }}</td>
@@ -42,6 +45,7 @@
 					<td>{{ $item->status }}</td>
 				</tr>
 				@endforeach
+			</tbody>
 		</table>
 	</div>
 	<script type=text/javascript>

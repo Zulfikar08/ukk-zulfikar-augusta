@@ -85,12 +85,22 @@ class AdminController extends Controller
         return redirect()->back()->with('status', 'User berhasil diaktifkan!');
     }
 
-    public function cetak_pdf()
+    public function cetak_pdf($role)
     {
-    	$pegawai = User::all();
- 
-    	$pdf = PDF::loadview('pegawai_pdf',['pegawai'=>$pegawai]);
-    	return $pdf->download('laporan-pegawai-pdf');
+
+        
+        // $users = User::all();
+    	// $pdf = PDF::loadview('admin.auth.report-user-pdf',['user'=>$user]);
+    	// return $pdf->download('laporan-user-pdf');
+        // $menu = Auth::user()->roles->pluck('name');
+        // $users = User::get()->roles->pluck('name')->toArray();
+        // $roles = Role::get();
+        // dd($users);
+        // $users->roles->pluck('name')->toArray();
+        $users = User::role($role)->get();
+        return view('admin.auth.report-user-pdf', [
+            'users' => $users,
+        ]);
     }
     
     public function user_excel() 

@@ -10,7 +10,7 @@
                     <h6 class="h2 text-white d-inline-block mb-0">Data User</h6>
                 </div>
                 <div class="col-lg-6 col-5 text-right">
-                    <a href="{{ route('admin/user-export') }}" class="btn btn-sm btn-neutral">
+                    <a href="" class="btn btn-sm btn-neutral" data-toggle="modal" data-target="#cetakPerLevel">
                         Buat Laporan
                     </a>
                 </div>
@@ -18,6 +18,39 @@
         </div>
     </div>
 </div>
+
+<!-- Modal -->
+<div class="modal fade" id="cetakPerLevel" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Cetak Laporan</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group row">
+                    <label for="lokasi" class="col-4 col-form-label">Role</label>
+                    <div class="col-8">
+                        <select class="form-control" id="role" name="role">
+                            <option value="admin">Admin</option>
+                            <option value="petugas">Petugas</option>
+                            <option value="Masyarakat">Masyarakat</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <a onclick="this.href='/admin/user/export/'+ document.getElementById('role').value"
+                    target="_blank" class="btn btn-primary text-white">Cetak</a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal -->
 
 <div class="container-fluid mt--6">
     <div class="row">
@@ -151,7 +184,7 @@
                                     <td>{{ $item->name }}</td>
                                     <td>{{ $item->email }}</td>
                                     <td>{{ $item->phone }}</td>
-                                    <td>{{ implode(', ', $item->roles()->get()->pluck('name')->toArray()) }}</td>
+                                    <td>{{ $item->getRoleNames()->first() }}</td>
                                     <td>
                                         <a class="badge badge-info"
                                             href="{{ route('admin/detail-user', $item->id) }}">detail</a>

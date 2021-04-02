@@ -36,7 +36,7 @@
                             <div class="card-profile-stats d-flex justify-content-center">
                                 <div>
                                     <span class="heading">{{ $user->name }}</span>
-                                    <span class="description">{{ implode(', ', $user->roles()->get()->pluck('name')->toArray()) }}</span>
+                                    <span class="description">{{ implode( $user->roles()->get()->pluck('name')->toArray()) }}</span>
                                 </div>
                             </div>
                         </div>
@@ -83,7 +83,7 @@
                                     <div class="form-group">
                                         <label class="form-control-label" for="email">Email</label>
                                         <input type="email" name="email" id="email" class="form-control @error('email') is-invalid @enderror"
-                                            placeholder="email@contoh.com" value="{{ $user->email }}">
+                                            placeholder="email@contoh.com" value="{{ $user->email }}" readonly>
                                         @error('email')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -96,7 +96,7 @@
                                 <div class="col-lg-6">
                                     <div class="form-group">
                                         <label class="form-control-label" for="nik">NIK</label>
-                                        <input type="text" name="nik" id="nik" class="form-control @error('nik') is-invalid @enderror" readonly
+                                        <input type="text" name="nik" id="nik" class="form-control @error('nik') is-invalid @enderror"
                                             value="{{ $user->nik }}">
                                         @error('nik')
                                         <span class="invalid-feedback" role="alert">

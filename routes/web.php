@@ -65,7 +65,7 @@ Route::namespace('Admin')->group(function() {
     Route::middleware('role:admin')->get('/admin/user-nonaktif', 'AdminController@user_nonaktif')->name('admin/user-nonaktif');
     Route::middleware('role:admin')->post('/admin/petugas/tambah', 'AdminController@petugas_tambah')->name('admin/petugas/tambah');
     //excel export
-    Route::middleware('role:admin')->get('/admin/user/export', 'AdminController@user_excel')->name('admin/user-export');
+    Route::middleware('role:admin')->get('/admin/user/export/{role}', 'AdminController@cetak_pdf')->name('admin/user-export');
     Route::middleware('role:admin')->get('/admin/pengaduan/export', 'AdminController@pengaduan_excel')->name('admin/pengaduan-export');
 });
 
