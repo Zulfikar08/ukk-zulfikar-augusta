@@ -43,7 +43,7 @@
     <div class="row">
         <div class="col-xl-8">
             @foreach( $pengaduan as $item )
-                @if($item->status != 'reject')
+                @if($item->status != 'pending')
                     @if($item->users['name'])
                     <div class="card">
                         <div class="card-header bg-transparent">
@@ -68,7 +68,7 @@
                                     src="{{ url('/'. $item->file) }}" alt="">
                             </div>
                             <p class="card-text">{{ $item->isi_laporan }}</p>
-                            <a href="{{ route('masyarakat/tanggapan', $item->id) }}"> Tanggapi &rarr;</a>
+                            <a href="{{ route('masyarakat/tanggapan', $item->id) }}"> Tanggapan &rarr;</a>
                         </div>
                         <div class="card-footer text-center">
                             <small> Dibuat pada : {{ $item->tgl_pengaduan }}</small>

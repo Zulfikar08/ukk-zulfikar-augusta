@@ -59,7 +59,7 @@
                 </ul>
                 @endforeach
             @else
-            <p class="text-center">Tidak Ada tanggapan</p>
+            <p class="text-center text-white">Tidak Ada tanggapan</p>
             @endif
             <form method="POST" action="{{ route('petugas/tanggapan/kirim') }}">
                 @csrf
@@ -77,8 +77,7 @@
                     <div class="col-xl-6">
                         <div class="form-group">
                             <select class="form-control @error('status') is-invalid @enderror" id="status" name="status">
-                                <option value=""><i>status</i></option>
-                                <option value="pending">Pending</option>
+                                <option value="{{ $pengaduan->status }}"><i>{{ $pengaduan->status }}</i></option>
                                 <option value="proses">Proses</option>
                                 <option value="selesai">Selesai</option>
                             </select>

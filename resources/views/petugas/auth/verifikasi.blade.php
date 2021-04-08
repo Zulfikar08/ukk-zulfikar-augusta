@@ -53,19 +53,9 @@
                                     <td class="name">{{ $item->users->name }}</td>
                                     <td class="budget">{{ $item->judul_laporan }}</td>
                                     <td>{{ Str::limit($item->isi_laporan, 50, '....') }}</td>
-                                    <td class="text-right">
-                                        <div class="dropdown">
-                                            <a class="btn btn-sm btn-icon-only text-light" href="#" role="button"
-                                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                <i class="fas fa-ellipsis-v"></i>
-                                            </a>
-                                            <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                                                <a class="dropdown-item"
-                                                    href="{{ route('petugas/detail-verifikasi', $item->id) }}">Detail</a>
-                                                <a class="dropdown-item" href="#">Tolak</a>
-                                                <a class="dropdown-item" href="#">Terima</a>
-                                            </div>
-                                        </div>
+                                    <td>
+                                        <a class="badge badge-info"
+                                            href="{{ route('petugas/detail-verifikasi', $item->id) }}">detail</a>
                                     </td>
                                 </tr>
                                 @endforeach

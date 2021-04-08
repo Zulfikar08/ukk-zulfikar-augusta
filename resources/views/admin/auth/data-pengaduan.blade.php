@@ -11,12 +11,23 @@
                     <h6 class="h2 text-white d-inline-block mb-0">Pengaduan</h6>
                 </div>
                 <div class="col-lg-6 col-5 text-right">
-                    <button data-toggle="modal" data-target="#cetakPertanggal" type="button"
+                    <div class="dropdown">
+                        <button class="btn btn-neutral btn-sm dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            cetak laporan pengaduan
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <a class="dropdown-item" data-toggle="modal" 
+                            data-target="#cetakPertanggal" type="button">Cetak pertanggal</a>
+                            <a class="dropdown-item" href="#">Another action</a>
+                            <a class="dropdown-item" href="#">Something else here</a>
+                        </div>
+                    </div>
+                    <!-- <button data-toggle="modal" data-target="#cetakPertanggal" type="button"
                         class="btn btn-sm btn-neutral">Cetak Pertanggal</button>
                     <button data-toggle="modal" data-target="#cetakPerlokasi" type="button"
                         class="btn btn-sm btn-neutral">Cetak Perlokasi</button>
                     <button data-toggle="modal" data-target="#cetakPerstatus" type="button"
-                        class="btn btn-sm btn-neutral">Cetak Perstatus</button>
+                        class="btn btn-sm btn-neutral">Cetak Perstatus</button> -->
                 </div>
             </div>
             <!-- Modal Report Pertanggal -->
@@ -124,14 +135,6 @@
     </div>
 </div>
 
-@if (session('status'))
-<div class="alert alert-success alert-dismissible fade show" role="alert">
-    <strong>Berhasil!</strong> {{ session('status') }}
-    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-    </button>
-</div>
-@endif
 
 <div class="container-fluid mt--6">
     <div class="row">
@@ -145,6 +148,14 @@
                     </div>
                 </div>
                 <div class="card-body">
+                @if (session('status'))
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    <strong>Berhasil!</strong> {{ session('status') }}
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                @endif
                     <div class="table-responsive">
                         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                             <thead>
@@ -164,7 +175,29 @@
                                     <td>{{ $item->users->name }}</td>
                                     <td>{{ $item->judul_laporan }}</td>
                                     <td>{{ $item->lokasi }}</td>
-                                    <td>{{ $item->status }}</td>
+                                    <td>
+                                        @if($item->status == 'pending')
+                                            <span class="badge badge-dot mr-4">
+                                                <i class="bg-warning"></i>
+                                                <span class="status">{{ $item->status }}</span>
+                                            </span>
+                                        @elseif($item->status == 'proses')
+                                            <span class="badge badge-dot mr-4">
+                                                <i class="bg-primary"></i>
+                                                <span class="status">{{ $item->status }}</span>
+                                            </span>
+                                        @elseif($item->status == 'selesai')
+                                            <span class="badge badge-dot mr-4">
+                                                <i class="bg-success"></i>
+                                                <span class="status">{{ $item->status }}</span>
+                                            </span>
+                                        @else
+                                            <span class="badge badge-dot mr-4">
+                                                <i class="bg-danger"></i>
+                                                <span class="status">{{ $item->status }}</span>
+                                            </span>    
+                                        @endif
+                                    </td>
                                     <td>
                                         <a class="badge badge-info"
                                             href="{{ route('admin/detail-aduan', $item->id) }}">detail</a>

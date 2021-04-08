@@ -2,29 +2,41 @@
 @section('title', 'Envelope | Aduan')
 
 @section('content')
-<div class="d-sm-flex align-items-center justify-content-between mb-4">
-    <h1 class="h3 mb-0 text-gray-800">Pengaduan</h1>
+<div class="header bg-gradient-info pb-6">
+    <div class="container-fluid">
+        <div class="header-body">
+            <div class="row align-items-center py-4">
+                <div class="col-lg-6 col-7">
+                    <h6 class="h2 text-white d-inline-block mb-0">Pengaduan</h6>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
-<!-- Content Row -->
-@if (session('status'))
-<div class="alert alert-success alert-dismissible fade show" role="alesrt">
-    <strong>Berhasil!</strong> {{ session('status') }}
-    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-    </button>
-</div>
-@endif
+
+<div class="container-fluid mt--6">
 <div class="row">
     <div class="col-lg-6 mb-3">
-
-        <!-- Approach -->
         <div class="card shadow mb-4">
-            <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-primary">Edit Laporan</h6>
+            <div class="card-header bg-transparent">
+                <div class="row align-items-center">
+                    <div class="col">
+                        <h5 class="h3 mb-0 text-info">Edit Laporan</h5>
+                    </div>
+                </div>
             </div>
             <div class="card-body">
-                <form method="post" action="{{ route('aduan/edit/kirim', $pengaduan->id) }}" enctype="multipart/form-data">
+                @if (session('status'))
+                <div class="alert alert-success alert-dismissible fade show" role="alesrt">
+                    <strong>Berhasil!</strong> {{ session('status') }}
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                @endif
+                <form method="post" action="{{ route('aduan/edit/kirim', $pengaduan->id) }}"
+                    enctype="multipart/form-data">
                     @method('patch')
                     @csrf
                     <input type="hidden" name="status" id="status" value="{{ $pengaduan->status }}">
@@ -40,8 +52,8 @@
                     </div>
                     <div class="form-group">
                         <label for="nik">NIK</label>
-                        <input type="text" class="form-control @error('nik') is-invalid @enderror" id="nik" name="nik" aria-describedby="emailHelp"
-                            value="{{ Auth::user()->nik }}" readonly>
+                        <input type="text" class="form-control @error('nik') is-invalid @enderror" id="nik" name="nik"
+                            aria-describedby="emailHelp" value="{{ Auth::user()->nik }}" readonly>
                         @error('nik')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
@@ -51,7 +63,7 @@
                     <div class="form-group">
                         <label for="nik">Desa</label>
                         <select class="form-control @error('lokasi') is-invalid @enderror" id="lokasi" name="lokasi">
-                            <option value=""> -- </option>
+                            <option value="{{ $pengaduan->lokasi }}">{{ $pengaduan->lokasi }}</option>
                             @foreach( $desa as $item )
                             <option value="{{ $item->nama_desa }}">{{ $item->nama_desa }}</option>
                             @endforeach
@@ -89,8 +101,13 @@
     </div>
     <div class="col-lg-6">
         <div class="card shadow mb-4">
-            <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-dark">{{ $pengaduan->users->name }} - {{ $pengaduan->judul_laporan }}</h6>
+            <div class="card-header bg-transparent">
+                <div class="row align-items-center">
+                    <div class="col">
+                        <h5 class="h3 mb-0 text-info">{{ $pengaduan->users->name }} -
+                            {{ $pengaduan->judul_laporan }}</h5>
+                    </div>
+                </div>
             </div>
             <div class="card-body">
                 <div class="text-center">

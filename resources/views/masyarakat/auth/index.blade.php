@@ -14,23 +14,7 @@
     </div>
 </div>
 
-@if (session('status'))
-<div class="alert alert-success alert-dismissible fade show" role="alert">
-    <strong>Berhasil!</strong> {{ session('status') }}
-    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-    </button>
-</div>
-@endif
 
-@if (session('error'))
-<div class="alert alert-danger alert-dismissible fade show" role="alert">
-    <strong>Error!</strong> {{ session('error') }}
-    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-    </button>
-</div>
-@endif
 <!-- Content Row -->
 <div class="container-fluid mt--6">
     <div class="row">
@@ -44,6 +28,23 @@
                     </div>
                 </div>
                 <div class="card-body">
+                
+                @if (session('status'))
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    <strong>Berhasil!</strong> {{ session('status') }}
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                @endif
+                @if (session('error'))
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        <strong>Error!</strong> {{ session('error') }}
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                @endif
                     <form method="post" action="{{ route('tulis-aduan/kirim') }}" enctype="multipart/form-data">
                         @csrf
                         <div class="form-group">
@@ -112,7 +113,7 @@
                 <div class="card-header bg-transparent">
                     <div class="row align-items-center">
                         <div class="col">
-                            <h5 class="h3 mb-0 text-info">Tulis laporan</h5>
+                            <h5 class="h3 mb-0 text-info">Aduan Saya</h5>
                         </div>
                     </div>
                 </div>

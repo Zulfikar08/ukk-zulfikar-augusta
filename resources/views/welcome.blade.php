@@ -247,7 +247,7 @@
                             <div class="card-subtitle">Jumlah masyarakt terdata</div>
                             <hr class="cell-divide-hr">
                             <div class="price">
-                                <span class="value">{{ $masyarakat }}</span>
+                                <span class="value text-danger">{{ $masyarakat }}</span>
                             </div>
                             <hr class="cell-divide-hr">
                         </div>
@@ -261,7 +261,7 @@
                             <div class="card-subtitle">Jumlah aduan terdata</div>
                             <hr class="cell-divide-hr">
                             <div class="price">
-                                <span class="value">{{ $pengaduan }}</span>
+                                <span class="value text-danger">{{ $pengaduan }}</span>
                             </div>
                             <hr class="cell-divide-hr">
                         </div>
@@ -275,7 +275,7 @@
                             <div class="card-subtitle">Jumlah petugas terdata</div>
                             <hr class="cell-divide-hr">
                             <div class="price">
-                                <span class="value">{{ $admin }}</span>
+                                <span class="value text-danger">{{ $admin }}</span>
                             </div>
                             <hr class="cell-divide-hr">
                         </div>
@@ -340,7 +340,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <h2>About The Owner</h2>
-                    <p class="p-heading p-large"></p>
+                    <p class="p-heading p-large">my hobby is traveling. because that's when I can make peace with myself</p>
                 </div> <!-- end of col -->
             </div> <!-- end of row -->
             <div class="row">

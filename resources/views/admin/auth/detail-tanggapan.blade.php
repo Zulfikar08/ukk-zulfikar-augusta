@@ -47,7 +47,7 @@
             </ul>
             @endforeach
         @else
-        <p class="text-center">Tidak Ada tanggapan</p>
+        <p class="text-center text-white">Tidak Ada tanggapan</p>
         @endif
         <form method="POST" action="{{ route('admin/tanggapan/kirim') }}">
             @csrf
